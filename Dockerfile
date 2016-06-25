@@ -25,6 +25,8 @@ RUN echo "deb http://overviewer.org/debian ./" >> /etc/apt/sources.list && \
 
 COPY config/config.py /home/minecraft/config.py
 
+RUN chown minecraft:minecraft -R /home/minecraft/
+
 WORKDIR /home/minecraft/
 
 USER minecraft
