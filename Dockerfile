@@ -21,7 +21,8 @@ RUN echo "deb http://overviewer.org/debian ./" >> /etc/apt/sources.list && \
     apt-get autoremove -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-    useradd -m minecraft
+    useradd -m minecraft && \
+    mkdir -p /home/minecraft/render /home/minecraft/server
 
 COPY config/config.py /home/minecraft/config.py
 
