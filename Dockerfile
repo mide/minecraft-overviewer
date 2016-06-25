@@ -14,7 +14,7 @@ RUN echo "deb http://overviewer.org/debian ./" >> /etc/apt/sources.list && \
     apt-get update && \
     apt-get install -y wget && \
     wget -O - http://overviewer.org/debian/overviewer.gpg.asc | apt-key add - && \
-    wget https://s3.amazonaws.com/Minecraft.Download/versions/${MINECRAFT_VERSION}/${MINECRAFT_VERSION}.jar -P ~/.minecraft/versions/${MINECRAFT_VERSION}/ && \
+    wget https://s3.amazonaws.com/Minecraft.Download/versions/${MINECRAFT_VERSION}/${MINECRAFT_VERSION}.jar -P /home/minecraft/.minecraft/versions/${MINECRAFT_VERSION}/ && \
     apt-get update && \
     apt-get install -y minecraft-overviewer && \
     apt-get remove -y wget && \
