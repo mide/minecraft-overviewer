@@ -34,6 +34,14 @@ renders["night"] = {
     'markers': markers
 }
 
+renders["nether"] = {
+    "world": "minecraft",
+    "title": "Nether",
+    "rendermode": 'nether_smooth_lighting',
+    "dimension": "nether",
+    'markers': markers
+}
+
 renders["end"] = {
     "world": "minecraft",
     "title": "End",
