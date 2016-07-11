@@ -37,7 +37,7 @@ renders["night"] = {
 renders["end"] = {
     "world": "minecraft",
     "title": "End",
-    "rendermode": "smooth_lighting",
+    "rendermode": [Base(), EdgeLines(), SmoothLighting(strength=0.5)],
     "dimension": "end",
     'markers': markers
 }
