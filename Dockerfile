@@ -13,7 +13,7 @@ ENV MINECRAFT_VERSION 1.11.2
 RUN echo "deb http://overviewer.org/debian ./" >> /etc/apt/sources.list && \
     apt-get update && \
     apt-get install -y wget && \
-    wget -O - http://overviewer.org/debian/overviewer.gpg.asc | apt-key add - && \
+    wget -O - https://overviewer.org/debian/overviewer.gpg.asc | apt-key add - && \
     apt-get update && \
     apt-get install -y minecraft-overviewer && \
     apt-get clean && \
