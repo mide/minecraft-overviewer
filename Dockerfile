@@ -8,7 +8,7 @@
 
 FROM debian:jessie
 
-ENV MINECRAFT_VERSION 1.10.2
+ENV MINECRAFT_VERSION 1.11.2
 
 RUN echo "deb http://overviewer.org/debian ./" >> /etc/apt/sources.list && \
     apt-get update && \
