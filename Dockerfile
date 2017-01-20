@@ -6,7 +6,7 @@
 # The Minecraft-Overviewer render will be output at
 #     /home/minecraft/render
 
-FROM debian:jessie
+FROM debian:latest
 
 RUN echo "deb http://overviewer.org/debian ./" >> /etc/apt/sources.list && \
     apt-get update && \
