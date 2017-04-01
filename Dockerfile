@@ -1,4 +1,4 @@
-# To use this Docker container, make sure you set up the mounts properly.
+# To use this Docker image, make sure you set up the mounts properly.
 #
 # The Minecraft server files are expected at
 #     /home/minecraft/server
