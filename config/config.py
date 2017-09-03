@@ -1,6 +1,6 @@
 def playerIcons(poi):
     if poi['id'] == 'Player':
-        poi['icon'] = "http://overviewer.org/avatar/%s" % poi['EntityId']
+        poi['icon'] = "https://overviewer.org/avatar/%s" % poi['EntityId']
         return "Last known location for %s" % poi['EntityId']
 
 # Only signs with "-- RENDER --" on the last line will be shown
