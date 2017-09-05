@@ -12,7 +12,7 @@ MAINTAINER Mark Ide Jr (https://www.mide.io)
 
 RUN echo "deb http://overviewer.org/debian ./" >> /etc/apt/sources.list && \
     apt-get update && \
-    apt-get install -y wget && \
+    apt-get install -y wget gnupg && \
     wget -O - https://overviewer.org/debian/overviewer.gpg.asc | apt-key add - && \
     apt-get update && \
     apt-get install -y minecraft-overviewer && \
