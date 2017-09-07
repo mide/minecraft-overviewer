@@ -14,8 +14,21 @@ The goal of this image is to easily run [Minecraft Overviewer](https://overviewe
 docker run \
   --rm \
   -e MINECRAFT_VERSION=1.11.2 \
-  -e GOOGLE_MAPS_API_KEY=<Google Maps API Key>
+  -e GOOGLE_MAPS_API_KEY=<Google Maps API Key> \
+  -e POI_ONLY=n \
+  -e OVERVIEWER_PARAMS="--processes 2"\
   -v /home/user/minecraft/:/home/minecraft/server/:ro \
   -v /srv/http/minecraft/:/home/minecraft/render/:rw \
   mide/minecraft-overviewer:latest
 ```
+
+## Environment Variables
+
+### `POI_ONLY`
+Only generate the points of interest and not the map tiles.
+
+### `GOOGLE_MAPS_API_KEY`
+Set the optional google maps api key.
+
+### `OVERVIEWER_PARAMS`
+Pass additional arguments to overviewer
