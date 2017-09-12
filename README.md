@@ -17,5 +17,5 @@ docker run \
   -e API_KEY=<GMAPS_API_KEY> \
   -v /home/user/minecraft/:/home/minecraft/server/:ro \
   -v /srv/http/minecraft/:/home/minecraft/render/:rw \
-  bflux/minecraft-overviewer:latest
+  mide/minecraft-overviewer:latest
 ```
