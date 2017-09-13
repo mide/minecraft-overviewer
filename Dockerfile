@@ -23,6 +23,7 @@ RUN apt-get update && \
 
 COPY config/config.py /home/minecraft/config.py
 COPY entrypoint.sh /home/minecraft/entrypoint.sh
+COPY utils/replace.py /home/minecraft/utils/replace.py
 
 RUN chown minecraft:minecraft -R /home/minecraft/
 

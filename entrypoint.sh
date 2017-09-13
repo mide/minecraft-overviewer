@@ -13,3 +13,8 @@ wget -N https://s3.amazonaws.com/Minecraft.Download/versions/${MINECRAFT_VERSION
 # Run the world renders (One pass to make map, one to generate points of interests)
 overviewer.py --config /home/minecraft/config.py
 overviewer.py --config /home/minecraft/config.py --genpoi
+
+# Add the Google Map's API Key to the index.html file if set env var is set
+if [ ! -z "$API_KEY" ]; then
+	python utils/replace.py
+fi
