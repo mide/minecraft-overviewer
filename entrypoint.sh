@@ -14,7 +14,7 @@ wget -N https://s3.amazonaws.com/Minecraft.Download/versions/${MINECRAFT_VERSION
 overviewer.py --config /home/minecraft/config.py
 overviewer.py --config /home/minecraft/config.py --genpoi
 
-# Add GMaps API key if API_KEY environment variable is set
-if [ "$API_KEY" ]; then
-  sed -i "s/https:\/\/maps.google.com\/maps\/api\/js/&?key=${API_KEY}/g" /home/minecraft/render/index.html
+# Add Google Maps API key if the GOOGLE_MAPS_API_KEY environment variable is set
+if [ "$GOOGLE_MAPS_API_KEY" ]; then
+  sed -i "s|https://maps.google.com/maps/api/js|&?key=${GOOGLE_MAPS_API_KEY}|g" /home/minecraft/render/index.html
 fi

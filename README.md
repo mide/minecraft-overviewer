@@ -14,7 +14,7 @@ The goal of this image is to easily run [Minecraft Overviewer](https://overviewe
 docker run \
   --rm \
   -e MINECRAFT_VERSION=1.11.2 \
-  -e API_KEY=<GMaps API Key>
+  -e GOOGLE_MAPS_API_KEY=<Google Maps API Key>
   -v /home/user/minecraft/:/home/minecraft/server/:ro \
   -v /srv/http/minecraft/:/home/minecraft/render/:rw \
   mide/minecraft-overviewer:latest
