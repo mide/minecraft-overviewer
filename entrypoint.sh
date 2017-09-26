@@ -20,4 +20,4 @@ if [ "$POI_ONLY" != "y" ]; then
   fi
 fi
 
-overviewer.py --config /home/minecraft/config.py --genpoi $OVERVIEWER_PARAMS
+overviewer.py --config /home/minecraft/config.py --genpoi 
