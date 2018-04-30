@@ -11,6 +11,7 @@ The goal of this image is to easily run [Minecraft Overviewer](https://overviewe
 ## Running Minecraft Overviewer
 
 ```
+docker pull mide/minecraft-overviewer:latest
 docker run \
   --rm \
   -e MINECRAFT_VERSION="1.11.2" \
