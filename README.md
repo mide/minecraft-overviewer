@@ -22,6 +22,9 @@ docker run \
 
 ## Environment Variables
 
+### `ADDITIONAL_ARGS`
+Default Value: _null_. Set to contain any additional arguments you'd like to pass into `overviewer.py`.
+
 ### `RENDER_MAP`
 Default Value: `true`. Set to `false` if you do not want to render the map. This is useful for POI only-updates.
 

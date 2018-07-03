@@ -12,10 +12,10 @@ wget -N https://s3.amazonaws.com/Minecraft.Download/versions/${MINECRAFT_VERSION
 
 # Render the Map
 if [ "$RENDER_MAP" == "true" ]; then
-  overviewer.py --config /home/minecraft/config.py
+  overviewer.py --config /home/minecraft/config.py $ADDITIONAL_ARGS
 fi
 
 # Render the POI
 if [ "$RENDER_POI" == "true" ]; then
-  overviewer.py --config /home/minecraft/config.py --genpoi
+  overviewer.py --config /home/minecraft/config.py --genpoi $ADDITIONAL_ARGS
 fi
