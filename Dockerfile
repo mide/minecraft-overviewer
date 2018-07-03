@@ -10,6 +10,10 @@ FROM debian:latest
 
 MAINTAINER Mark Ide Jr (https://www.mide.io)
 
+# Default to do both render Map + POI
+ENV RENDER_MAP true
+ENV RENDER_POI true
+
 RUN apt-get update && \
     apt-get install -y wget gnupg && \
     echo "deb http://overviewer.org/debian ./" >> /etc/apt/sources.list && \

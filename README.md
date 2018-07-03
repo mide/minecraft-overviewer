@@ -19,3 +19,11 @@ docker run \
   -v /srv/http/minecraft/:/home/minecraft/render/:rw \
   mide/minecraft-overviewer:latest
 ```
+
+## Environment Variables
+
+### `RENDER_MAP`
+Default Value: `true`. Set to `false` if you do not want to render the map. This is useful for POI only-updates.
+
+### `RENDER_POI`
+Default Value: `true`. Set to `false` to disable rendering of POI (points of interest).
