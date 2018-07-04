@@ -3,11 +3,11 @@ def playerIcons(poi):
         poi['icon'] = "https://overviewer.org/avatar/%s" % poi['EntityId']
         return "Last known location for %s" % poi['EntityId']
 
-# Only signs with "-- RENDER --" on the last line will be shown
-# Otherwise, people can't have secret bases and the render is too busy anyways.
+# Only signs with "-- RENDER --" in them, and no others. Otherwise, people
+# can't have secret bases and the render is too busy anyways.
 def signFilter(poi):
-    if poi['id'] == 'Sign':
-        if poi['Text4'] == '-- RENDER --':
+    if poi['id'] in ['Sign', 'minecraft:sign']:
+        if '-- RENDER --' in poi.values():
             return "\n".join([poi['Text1'], poi['Text2'], poi['Text3'], poi['Text4']])
 
 worlds['minecraft'] = "/home/minecraft/server/world"
