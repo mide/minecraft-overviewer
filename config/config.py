@@ -6,7 +6,7 @@ def playerIcons(poi):
 # Only signs with "-- RENDER --" in them, and no others. Otherwise, people
 # can't have secret bases and the render is too busy anyways.
 def signFilter(poi):
-    if poi['id'] == 'Sign':
+    if poi['id'] in ['Sign', 'minecraft:sign']:
         if '-- RENDER --' in poi.values():
             return "\n".join([poi['Text1'], poi['Text2'], poi['Text3'], poi['Text4']])
 
