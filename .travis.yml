@@ -3,7 +3,6 @@ services:
 
 stages:
   - name: build
-  - name: test
   - name: deploy
     if: branch = master
 
@@ -11,7 +10,6 @@ jobs:
   include:
     - stage: build
       script: make build
-    - stage: test
     - stage: deploy
       script: make deploy
 
