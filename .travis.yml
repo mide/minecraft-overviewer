@@ -7,9 +7,21 @@ jobs:
       script: make build
 
     # Push only on master and it's not a PR
-    - stage: deploy
+    - stage: push
       if: branch = master
       script: '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && make push || exit 0'
+
+    - stage: deploy
+      deploy:
+        provider: s3
+        access_key_id: $AWS_ACCESS_KEY_ID
+        secret_access_key: $AWS_SECRET_ACCESS_KEY
+        bucket: $AWS_S3_BUCKET
+        region: $AWS_S3_REGION
+        skip_cleanup: true
+        local_dir: _site
+        on:
+          branch: master
 
 notifications:
   pushover:
