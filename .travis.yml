@@ -12,6 +12,7 @@ jobs:
       script: '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && make push || exit 0'
 
     - stage: deploy
+      script: ""
       deploy:
         provider: script
         script: make push
