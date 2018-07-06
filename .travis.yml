@@ -6,8 +6,11 @@ jobs:
     - stage: build
       script: make build
     - stage: deploy
-      script: make push
-      if: branch = master
+      deploy:
+        provider: script
+        script: make push
+        on:
+          branch: maaster
 
 notifications:
   pushover:
