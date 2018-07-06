@@ -12,7 +12,9 @@ jobs:
     #     on:
     #       branch: master
 
-    - stage: push
+
+    - stage: deploy
+      script: ""
       deploy:
         provider: script
         script: make push
