@@ -6,9 +6,10 @@ jobs:
     - stage: build
       script: make build
 
+    # Push only on master and it's not a PR
     - stage: deploy
       if: branch = master
-      script: make push
+      script: '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && make push || exit 0'
 
 notifications:
   pushover:
