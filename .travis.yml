@@ -12,6 +12,13 @@ jobs:
     #     on:
     #       branch: master
 
+    - stage: push
+      deploy:
+        provider: script
+        script: bash scripts/deploy.sh
+        on:
+          branch: develop
+
 notifications:
   pushover:
     api_key:
