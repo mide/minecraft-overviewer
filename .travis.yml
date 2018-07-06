@@ -10,7 +10,7 @@ jobs:
         provider: script
         script: make push
         on:
-          branch: maaster
+          branch: master
 
 notifications:
   pushover:
