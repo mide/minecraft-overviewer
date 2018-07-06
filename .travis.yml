@@ -1,8 +1,19 @@
 services:
   - docker
 
-script:
-  - docker build -t mide/minecraft-overviewer:latest -f Dockerfile .
+stages:
+  - name: build
+  - name: test
+  - name: deploy
+    if: branch = master
+
+jobs:
+  include:
+    - stage: build
+      script: make build
+    - stage: test
+    - stage: deploy
+      script: make deploy
 
 notifications:
   pushover:
