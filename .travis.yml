@@ -11,7 +11,7 @@ jobs:
     - stage: build
       script: make build
     - stage: deploy
-      script: make deploy
+      script: make push
 
 notifications:
   pushover:
