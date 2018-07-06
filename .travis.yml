@@ -15,9 +15,9 @@ jobs:
     - stage: push
       deploy:
         provider: script
-        script: bash scripts/deploy.sh
+        script: make push
         on:
-          branch: develop
+          branch: master
 
 notifications:
   pushover:
