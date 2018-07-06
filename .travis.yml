@@ -1,17 +1,13 @@
 services:
   - docker
 
-stages:
-  - name: build
-  - name: deploy
-    if: branch = master
-
 jobs:
   include:
     - stage: build
       script: make build
     - stage: deploy
       script: make push
+      if: branch = master
 
 notifications:
   pushover:
