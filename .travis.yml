@@ -5,21 +5,9 @@ jobs:
   include:
     - stage: build
       script: make build
-    # - stage: deploy
-    #   deploy:
-    #     provider: script
-    #     script: make push
-    #     on:
-    #       branch: master
-
 
     - stage: deploy
-      script: ""
-      deploy:
-        provider: script
-        script: make push
-        on:
-          branch: master
+      script: make push
 
 notifications:
   pushover:
