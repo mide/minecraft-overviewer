@@ -6,7 +6,7 @@
 # The Minecraft-Overviewer render will be output at
 #     /home/minecraft/render
 
-FROM debian:latest
+FROM debian:stretch
 
 MAINTAINER Mark Ide Jr (https://www.mide.io)
 
