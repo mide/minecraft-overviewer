@@ -49,3 +49,10 @@ renders["end"] = {
     "dimension": "end",
     'markers': markers
 }
+
+renders["overlay_biome"] = {
+    'world': 'minecraft',
+    'rendermode': [ClearBase(), BiomeOverlay()],
+    'title': "Biome Coloring Overlay",
+    'overlay': ["day"]
+}
