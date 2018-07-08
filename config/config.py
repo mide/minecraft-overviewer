@@ -56,3 +56,17 @@ renders["overlay_biome"] = {
     'title': "Biome Coloring Overlay",
     'overlay': ["day"]
 }
+
+renders["overlay_mobs"] = {
+    'world': 'minecraft',
+    'rendermode': [ClearBase(), SpawnOverlay()],
+    'title': "Mob Spawnable Areas Overlay",
+    'overlay': ["day"]
+}
+
+renders["overlay_slime"] = {
+    'world': 'minecraft',
+    'rendermode': [ClearBase(), SlimeOverlay()],
+    'title': "Slime Chunk Overlay",
+    'overlay': ["day"]
+}
