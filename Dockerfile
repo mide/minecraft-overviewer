@@ -8,7 +8,7 @@
 
 FROM debian:stretch
 
-MAINTAINER Mark Ide Jr (https://www.mide.io)
+LABEL MAINTAINER = 'Mark Ide Jr (https://www.mide.io)'
 
 # Default to do both render Map + POI
 ENV RENDER_MAP true
