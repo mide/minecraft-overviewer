@@ -1,3 +1,5 @@
+import os
+
 def playerIcons(poi):
     if poi['id'] == 'Player':
         poi['icon'] = "https://overviewer.org/avatar/%s" % poi['EntityId']
@@ -12,6 +14,7 @@ def signFilter(poi):
 
 worlds['minecraft'] = "/home/minecraft/server/world"
 outputdir = "/home/minecraft/render/"
+texturepath = '/home/minecraft/{}.jar'.format(os.environ['MINECRAFT_VERSION'])
 
 markers = [
     dict(name="Players", filterFunction=playerIcons),
