@@ -1,7 +1,11 @@
+import os
+
+
 def playerIcons(poi):
     if poi['id'] == 'Player':
-        poi['icon'] = "https://overviewer.org/avatar/%s" % poi['EntityId']
-        return "Last known location for %s" % poi['EntityId']
+        poi['icon'] = "https://overviewer.org/avatar/{}".format(poi['EntityId'])
+        return "Last known location for {}".format(poi['EntityId'])
+
 
 # Only signs with "-- RENDER --" in them, and no others. Otherwise, people
 # can't have secret bases and the render is too busy anyways.
@@ -10,8 +14,10 @@ def signFilter(poi):
         if '-- RENDER --' in poi.values():
             return "\n".join([poi['Text1'], poi['Text2'], poi['Text3'], poi['Text4']])
 
+
 worlds['minecraft'] = "/home/minecraft/server/world"
 outputdir = "/home/minecraft/render/"
+texturepath = "/home/minecraft/{}.jar".format(os.environ['MINECRAFT_VERSION'])
 
 markers = [
     dict(name="Players", filterFunction=playerIcons),
