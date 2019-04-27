@@ -14,6 +14,7 @@ def get_json_from_url(url):
     response = urllib2.urlopen(request)
     return json.loads(response.read().decode())
 
+
 def get_minecraft_download_url(version):
     data = get_json_from_url(MANIFEST_URL)
 
@@ -28,6 +29,7 @@ def get_minecraft_download_url(version):
 
     download_url = data['downloads']['client']['url']
     return download_url
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument("version")
