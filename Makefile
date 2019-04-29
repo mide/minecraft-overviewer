@@ -8,6 +8,7 @@ build:
 dive:
 	docker build -t mide/minecraft-overviewer:latest -f Dockerfile .
 	docker run --rm -it \
+		-v /var/run/docker.sock:/var/run/docker.sock \
 		-e CI=true \
 		wagoodman/dive:latest "mide/minecraft-overviewer:latest"
 push:
