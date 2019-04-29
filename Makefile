@@ -9,7 +9,7 @@ dive:
 	docker build -t mide/minecraft-overviewer:latest -f Dockerfile .
 	docker run --rm -it \
 		-e CI=true \
-		wagoodman/dive:latest
+		wagoodman/dive:latest "mide/minecraft-overviewer:latest"
 push:
 	@make build
 	echo "${DOCKER_HUB_PASSWORD}" | docker login -u "${DOCKER_HUB_USERNAME}" --password-stdin
