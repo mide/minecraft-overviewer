@@ -6,6 +6,9 @@ jobs:
     - stage: build
       script: make build
 
+    - stage: test
+      script: make test-dive
+
     - stage: deploy
       script: ""
       deploy:
