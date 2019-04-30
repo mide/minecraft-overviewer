@@ -1,11 +1,9 @@
-test: dive
-
 build:
 	docker build -t mide/minecraft-overviewer:latest -f Dockerfile .
 	docker tag "mide/minecraft-overviewer:latest" "mide/minecraft-overviewer:${TRAVIS_COMMIT}"
 	docker tag "mide/minecraft-overviewer:latest" "mide/minecraft-overviewer:$(shell date +%Y-%m)"
 
-dive:
+test-dive:
 	docker build -t mide/minecraft-overviewer:latest -f Dockerfile .
 	docker run --rm -it \
 		-v /var/run/docker.sock:/var/run/docker.sock \

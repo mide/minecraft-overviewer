@@ -7,7 +7,7 @@ jobs:
       script: make build
 
     - stage: test
-      script: make test
+      script: make test-dive
 
     - stage: deploy
       script: ""
