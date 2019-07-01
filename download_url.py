@@ -2,7 +2,7 @@
 
 import argparse
 import json
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 
 MANIFEST_URL = "https://launchermeta.mojang.com/mc/game/version_manifest.json"
 
@@ -10,15 +10,15 @@ MANIFEST_URL = "https://launchermeta.mojang.com/mc/game/version_manifest.json"
 def get_json_from_url(url):
     if not url.startswith("https://"):
         raise RuntimeError("Expected URL to start with https://. It is '{}'.".format(url))
-    request = urllib2.Request(url)
-    response = urllib2.urlopen(request)
+    request = urllib.request.Request(url)
+    response = urllib.request.urlopen(request)
     return json.loads(response.read().decode())
 
 
 def get_minecraft_download_url(version):
     data = get_json_from_url(MANIFEST_URL)
 
-    desired_versions = list(filter(lambda v: v['id'] == version, data['versions']))
+    desired_versions = list([v for v in data['versions'] if v['id'] == version])
     if len(desired_versions) == 0:
         raise RuntimeError("Couldn't find Minecraft Version {} in manifest file {}.".format(version, MANIFEST_URL))
     elif len(desired_versions) > 1:
@@ -36,4 +36,4 @@ parser.add_argument("version")
 args = parser.parse_args()
 
 # Print out URL for consumption by another program.
-print(get_minecraft_download_url(args.version))
+print((get_minecraft_download_url(args.version)))
