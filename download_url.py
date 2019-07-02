@@ -2,7 +2,7 @@
 
 import argparse
 import json
-import urllib2
+import urllib.request
 
 MANIFEST_URL = "https://launchermeta.mojang.com/mc/game/version_manifest.json"
 
@@ -10,8 +10,8 @@ MANIFEST_URL = "https://launchermeta.mojang.com/mc/game/version_manifest.json"
 def get_json_from_url(url):
     if not url.startswith("https://"):
         raise RuntimeError("Expected URL to start with https://. It is '{}'.".format(url))
-    request = urllib2.Request(url)
-    response = urllib2.urlopen(request)
+    request = urllib.request.Request(url)
+    response = urllib.request.urlopen(request)
     return json.loads(response.read().decode())
 
 
