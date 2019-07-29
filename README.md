@@ -28,8 +28,12 @@ docker run \
   Set to the version of Minecraft the world is based from (Like `1.14`). Used for textures.
 
 ### Optional
+
 - `ADDITIONAL_ARGS`
   Default Value: _null_. Set to contain any additional arguments you'd like to pass into `overviewer.py`.
+
+- `CONFIG_LOCATION`
+  Default Value: `/home/minecraft/config.py`. Set to a different path to override the provided configuration. This only makes sense if you have a different configuration in a volume.
 
 - `RENDER_MAP`
   Default Value: `true`. Set to `false` if you do not want to render the map. This is useful for POI only-updates.

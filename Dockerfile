@@ -14,6 +14,8 @@ LABEL MAINTAINER = 'Mark Ide Jr (https://www.mide.io)'
 ENV RENDER_MAP true
 ENV RENDER_POI true
 
+ENV CONFIG_LOCATION /home/minecraft/config.py
+
 RUN apt-get update && \
     apt-get install -y wget gnupg && \
     echo "deb http://overviewer.org/debian ./" >> /etc/apt/sources.list && \

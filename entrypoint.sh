@@ -14,10 +14,10 @@ wget -N "${CLIENT_URL}" -O "${MINECRAFT_VERSION}.jar" -P /home/minecraft/.minecr
 
 # Render the Map
 if [ "$RENDER_MAP" == "true" ]; then
-  overviewer.py --config /home/minecraft/config.py $ADDITIONAL_ARGS
+  overviewer.py --config "$CONFIG_LOCATION" $ADDITIONAL_ARGS
 fi
 
 # Render the POI
 if [ "$RENDER_POI" == "true" ]; then
-  overviewer.py --config /home/minecraft/config.py --genpoi $ADDITIONAL_ARGS
+  overviewer.py --config "$CONFIG_LOCATION" --genpoi $ADDITIONAL_ARGS
 fi
