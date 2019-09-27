@@ -1,0 +1,13 @@
+PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+SHELL=/bin/bash
+BASH_ENV=/home/minecraft/container.env
+
+# minutes hours day-of-month month day-0f-week command
+
+# Every 5 minutes
+*/5 * * * * echo "=== I'm alive ===" > /proc/1/fd/1 2>/proc/1/fd/2
+
+# Render schedule
+replacement_string /home/minecraft/render.sh  > /proc/1/fd/1 2>/proc/1/fd/2
+
+# Don't remove the empty line at the end of this file. It is required to run the cron job

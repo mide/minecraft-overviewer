@@ -12,12 +12,15 @@ CLIENT_URL=$(python3 /home/minecraft/download_url.py "$MINECRAFT_VERSION")
 echo "Using Client URL $CLIENT_URL."
 wget -N "${CLIENT_URL}" -O "${MINECRAFT_VERSION}.jar" -P /home/minecraft/.minecraft/versions/${MINECRAFT_VERSION}/
 
-# Render the Map
-if [ "$RENDER_MAP" == "true" ]; then
-  overviewer.py --config "$CONFIG_LOCATION" $ADDITIONAL_ARGS
-fi
-
-# Render the POI
-if [ "$RENDER_POI" == "true" ]; then
-  overviewer.py --config "$CONFIG_LOCATION" --genpoi $ADDITIONAL_ARGS
+# Schedule render
+if [ ! -z "$CRONTAB" ]; then
+  # Make env variables accessible in crontab
+  declare -p | grep -Ev 'BASHOPTS|BASH_VERSINFO|EUID|PPID|SHELLOPTS|UID' > /home/minecraft/container.env
+  sed -i "s#replacement_string#${CRONTAB}#" /home/minecraft/overviewer_cron
+  crontab /home/minecraft/overviewer_cron
+  echo "Running cron in the foreground"
+  cron -f
+# Render immediately
+else
+  bash /home/minecraft/render.sh
 fi
