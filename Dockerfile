@@ -17,7 +17,7 @@ ENV RENDER_POI true
 ENV CONFIG_LOCATION /home/minecraft/config.py
 
 RUN apt-get update && \
-    apt-get install -y wget gnupg && \
+    apt-get install -y wget gnupg cron && \
     echo "deb http://overviewer.org/debian ./" >> /etc/apt/sources.list && \
     wget -O - https://overviewer.org/debian/overviewer.gpg.asc | apt-key add - && \
     apt-get update && \
@@ -27,8 +27,14 @@ RUN apt-get update && \
     useradd -m minecraft && \
     mkdir -p /home/minecraft/render /home/minecraft/server
 
+# Allow the minecraft user ton run cron
+RUN usermod -a -G crontab minecraft
+RUN chmod g+rw /var/run
+RUN chmod gu+s /usr/sbin/cron
+
 COPY config/config.py /home/minecraft/config.py
-COPY entrypoint.sh /home/minecraft/entrypoint.sh
+COPY scripts/* /home/minecraft/
+RUN chmod +x /home/minecraft/render.sh
 COPY download_url.py /home/minecraft/download_url.py
 
 RUN chown minecraft:minecraft -R /home/minecraft/

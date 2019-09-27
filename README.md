@@ -40,3 +40,6 @@ docker run \
 
 - `RENDER_POI`
   Default Value: `true`. Set to `false` to disable rendering of POI (points of interest).
+
+- `CRONTAB`
+  Default Value: _null_. Set to a crontab expression to schedule the render. For instance, use `CRONTAB="* */2 * * *"` to render every 2 hours.
