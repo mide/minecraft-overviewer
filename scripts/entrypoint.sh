@@ -14,7 +14,7 @@ wget -N "${CLIENT_URL}" -O "${MINECRAFT_VERSION}.jar" -P /home/minecraft/.minecr
 
 # Schedule render
 if [ ! -z "$CRONTAB" ]; then
-  # Make env variables accessible in crontab
+  # Make environment variables accessible in crontab
   declare -p | grep -Ev 'BASHOPTS|BASH_VERSINFO|EUID|PPID|SHELLOPTS|UID' > /home/minecraft/container.env
   sed -i "s#replacement_string#${CRONTAB}#" /home/minecraft/overviewer_cron
   crontab /home/minecraft/overviewer_cron
