@@ -19,5 +19,5 @@ fi
 
 # Render the POI
 if [ "$RENDER_POI" == "true" ]; then
-  overviewer.py --config "$CONFIG_LOCATION" --genpoi $ADDITIONAL_ARGS
+  overviewer.py --config "$CONFIG_LOCATION" --genpoi $ADDITIONAL_ARGS_POI
 fi

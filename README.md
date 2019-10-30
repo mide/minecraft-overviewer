@@ -32,6 +32,9 @@ docker run \
 - `ADDITIONAL_ARGS`
   Default Value: _null_. Set to contain any additional arguments you'd like to pass into `overviewer.py`.
 
+- `ADDITIONAL_ARGS_POI`
+  Default Value: _null_. Set to contain any additional arguments you'd like to pass into `overviewer.py --genpoi`.
+
 - `CONFIG_LOCATION`
   Default Value: `/home/minecraft/config.py`. Set to a different path to override the provided configuration. This only makes sense if you have a different configuration in a volume.
 
