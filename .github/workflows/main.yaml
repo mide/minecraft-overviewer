@@ -1,0 +1,29 @@
+name: Main
+on: push
+
+jobs:
+  workflow:
+    name: Workflow
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Docker Build
+        uses: docker/build-push-action@v1
+        with:
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+          push: false
+          repository: mide/minecraft-overviewer
+          tag_with_sha: true
+          tags: latest
+          username: mide
+      - name: Docker Push
+        uses: docker/build-push-action@v1
+        if: ${{ github.ref == 'master' }}
+        with:
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+          push: true
+          repository: mide/minecraft-overviewer
+          tag_with_sha: true
+          tags: latest
+          username: mide

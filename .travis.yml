@@ -6,20 +6,20 @@ jobs:
     - stage: build
       script: make build
 
-    - stage: test
-      script: make test-dive
+    # - stage: test
+    #   script: make test-dive
 
-    - stage: deploy
-      script: ""
-      deploy:
-        provider: script
-        script: make push
-        on:
-          branch: master
+    # - stage: deploy
+    #   script: ""
+    #   deploy:
+    #     provider: script
+    #     script: make push
+    #     on:
+    #       branch: master
 
-notifications:
-  pushover:
-    api_key:
-      secure: i76NSO1u0sBpfIWfauEfgHRz1KwBVcIaHmua7fVtqj0tRz1tyWtZdoQT9kglWL4EiLJhW0lxTZC734cTy5UqEqNkfPmEIVUb6c1eHsl5WVV5ajnbNUHS7yLP4A0lelK0BQ5HVQ7uoZ1sl9gzSVMPbHafZUhfM0MGwKenQIWpK6j34j20IHiKPJLbheBi0AhfNfgL+1pN71tj8sz4F5ktcLhqg4298x157TkkaEga71nEnZE1Pg4Cl/Wtskta8daZEj4nBKEQnvpnXQhuLYbu8fMbEu+RSJabAtGH8KkaKURZn3Kr4JvIdtWOiVkSS+19AP4miwG3UIPKiR7E2YLgYXBkvRUo5LGb6T/sD44jqanVtrHsqWAeYw7TkDee4dpCWnIv/+hD3qaFYWh8z9jXD2U7QJsvKDHRrDQXg5NUutmIlViGz216X9mHiPdzsVFg3u+beXVJFJDZE5KjLGKMFqnTmJ34ilVAwkfgnC4696ME19UGDcse1rDlj1/n+VC1nZzjEIDqtd7bZONcZ2UM3VJzQ9uMIjlxvg4/Nzr9LX7f6PvxWLpuo3Z/a3cRh5GpbDm8DrvANHSPwXEk0AXoDbRRQu1g59sX3PVPYgz/CnQv85mF6EVQs3bFokPVuWJpPPzNXJU/KKYekB6/40dCVaPulpM8HjH+OUj1qCb/4lc=
-    users:
-      secure: BWruun0TQFz2w5QrjR+TqOrz4J+F5UuT2uvQA+K3ZgPEyVflha2QqSVDXoOsNqonVwBznZRIXD7it0ts8dNy6JbDlZOfPiLTuiGUrVNoymiC0rO58QYHQtEyBf+5mTKqAz+nB9PAUmQdCyJOrb/iydyjdCfOIJTuniz/+G4vOeeToZIHZRbg22bmpkFm7nT81n12RPMu1QF2y9mWMmgLtmPihWbMCi6V2EuTq1EmDy1kBpcPJSw9WqYcqqwapqlqG1dZBAzWkgcYnsxOp44V5JCFhkW92rf8rxsj14bysSGZ99H4+8x6TSvodpPGoAWSz/LVs0BbMibvoYbD6BWKRk8sbK8VV+VzdhgOIVt7teIVxz7k2WcA1e0+8seB58dje1dxSLULXPieuXR1SdX9Ch1GXdT4FdraLSU2ybjrNLS2dHbs+mDo45s/ZWm1Y2soi+FWuRSsTkN+Sv4YY2LYA/38DdO1MuUi/2wkOgw4p7ydQaSzy8zcJvhGD0uq5s/d2beGU/cP+Ausedn6O/ojluAtmSb+Hg85OBWZD1B2f0nvivaPfl6JDerpKKmiwJfj2gMjoXEBdIYm552u3N8P9vh3t3Pqtmg+rScat9EB7gzjj1ulaiOijbnXPeC2m7s5cyFgQN8xtMAvEIVpEhDCLXRAog7cLxjUneJcY8qL6VA=
+# notifications:
+#   pushover:
+#     api_key:
+#       secure: i76NSO1u0sBpfIWfauEfgHRz1KwBVcIaHmua7fVtqj0tRz1tyWtZdoQT9kglWL4EiLJhW0lxTZC734cTy5UqEqNkfPmEIVUb6c1eHsl5WVV5ajnbNUHS7yLP4A0lelK0BQ5HVQ7uoZ1sl9gzSVMPbHafZUhfM0MGwKenQIWpK6j34j20IHiKPJLbheBi0AhfNfgL+1pN71tj8sz4F5ktcLhqg4298x157TkkaEga71nEnZE1Pg4Cl/Wtskta8daZEj4nBKEQnvpnXQhuLYbu8fMbEu+RSJabAtGH8KkaKURZn3Kr4JvIdtWOiVkSS+19AP4miwG3UIPKiR7E2YLgYXBkvRUo5LGb6T/sD44jqanVtrHsqWAeYw7TkDee4dpCWnIv/+hD3qaFYWh8z9jXD2U7QJsvKDHRrDQXg5NUutmIlViGz216X9mHiPdzsVFg3u+beXVJFJDZE5KjLGKMFqnTmJ34ilVAwkfgnC4696ME19UGDcse1rDlj1/n+VC1nZzjEIDqtd7bZONcZ2UM3VJzQ9uMIjlxvg4/Nzr9LX7f6PvxWLpuo3Z/a3cRh5GpbDm8DrvANHSPwXEk0AXoDbRRQu1g59sX3PVPYgz/CnQv85mF6EVQs3bFokPVuWJpPPzNXJU/KKYekB6/40dCVaPulpM8HjH+OUj1qCb/4lc=
+#     users:
+#       secure: BWruun0TQFz2w5QrjR+TqOrz4J+F5UuT2uvQA+K3ZgPEyVflha2QqSVDXoOsNqonVwBznZRIXD7it0ts8dNy6JbDlZOfPiLTuiGUrVNoymiC0rO58QYHQtEyBf+5mTKqAz+nB9PAUmQdCyJOrb/iydyjdCfOIJTuniz/+G4vOeeToZIHZRbg22bmpkFm7nT81n12RPMu1QF2y9mWMmgLtmPihWbMCi6V2EuTq1EmDy1kBpcPJSw9WqYcqqwapqlqG1dZBAzWkgcYnsxOp44V5JCFhkW92rf8rxsj14bysSGZ99H4+8x6TSvodpPGoAWSz/LVs0BbMibvoYbD6BWKRk8sbK8VV+VzdhgOIVt7teIVxz7k2WcA1e0+8seB58dje1dxSLULXPieuXR1SdX9Ch1GXdT4FdraLSU2ybjrNLS2dHbs+mDo45s/ZWm1Y2soi+FWuRSsTkN+Sv4YY2LYA/38DdO1MuUi/2wkOgw4p7ydQaSzy8zcJvhGD0uq5s/d2beGU/cP+Ausedn6O/ojluAtmSb+Hg85OBWZD1B2f0nvivaPfl6JDerpKKmiwJfj2gMjoXEBdIYm552u3N8P9vh3t3Pqtmg+rScat9EB7gzjj1ulaiOijbnXPeC2m7s5cyFgQN8xtMAvEIVpEhDCLXRAog7cLxjUneJcY8qL6VA=
