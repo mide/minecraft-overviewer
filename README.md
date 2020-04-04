@@ -14,7 +14,7 @@ The goal of this image is to easily run [Minecraft Overviewer](https://overviewe
 docker pull mide/minecraft-overviewer:latest
 docker run \
   --rm \
-  -e MINECRAFT_VERSION="1.14" \
+  -e MINECRAFT_VERSION="1.14.1" \
   -v /home/user/minecraft/:/home/minecraft/server/:ro \
   -v /srv/http/minecraft/:/home/minecraft/render/:rw \
   mide/minecraft-overviewer:latest
@@ -25,7 +25,7 @@ docker run \
 ### Required
 
 - `MINECRAFT_VERSION`
-  Set to the version of Minecraft the world is based from (Like `1.14`). Used for textures.
+  Set to the version of Minecraft the world is based from (Like `1.14.1`). Used for textures.
 
 ### Optional
 
