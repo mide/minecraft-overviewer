@@ -17,7 +17,7 @@ ENV RENDER_POI true
 ENV CONFIG_LOCATION /home/minecraft/config.py
 
 RUN apt-get update && \
-    apt-get install -y wget gnupg && \
+    apt-get install -y wget gnupg optipng && \
     echo "deb http://overviewer.org/debian ./" >> /etc/apt/sources.list && \
     wget -O - https://overviewer.org/debian/overviewer.gpg.asc | apt-key add - && \
     apt-get update && \
