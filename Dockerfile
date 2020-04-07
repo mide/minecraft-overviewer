@@ -15,7 +15,7 @@ ENV RENDER_MAP true
 ENV RENDER_POI true
 
 # Only render signs including this string, leave blank to render all signs
-ENV RENDER_SIGNS_INCLUDE "-- RENDER --"
+ENV RENDER_SIGNS_FILTER "-- RENDER --"
 
 ENV CONFIG_LOCATION /home/minecraft/config.py
 
