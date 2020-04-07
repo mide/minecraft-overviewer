@@ -19,7 +19,7 @@ def signFilter(poi):
         sign_filter_string = os.environ.get('RENDER_SIGNS_INCLUDE', "")
         render_all_signs = len(sign_filter_string) == 0
         if render_all_signs or sign_filter_string in poi.values():
-            return "<br>".join([poi['Text1'], poi['Text2'], poi['Text3'], poi['Text4']])
+            return "<br />".join([poi['Text1'], poi['Text2'], poi['Text3'], poi['Text4']])
 
 
 worlds['minecraft'] = "/home/minecraft/server/world"
