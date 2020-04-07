@@ -43,3 +43,6 @@ docker run \
 
 - `RENDER_POI`
   Default Value: `true`. Set to `false` to disable rendering of POI (points of interest).
+
+- `RENDER_SIGNS_INCLUDE`
+  Default Value: `-- RENDER --`. Only signs with this string will be rendered. Useful for allowing hidden bases or decluttering the render. Set to an empty string (`""`) to render all signs.
