@@ -46,3 +46,9 @@ docker run \
 
 - `RENDER_SIGNS_FILTER`
   Default Value: `-- RENDER --`. Only signs with this string will be included in the POI (points of interest) render. Useful for allowing hidden bases or decluttering the render. Set to an empty string (`""`) to render all signs.
+
+- `RENDER_SIGNS_HIDE_FILTER`
+  Default Value: `false`. Set to `true` to prevent the sign filter string (Set via `RENDER_SIGNS_FILTER`) from appearing in the render. For example, if only signs with `-- RENDER --` are displayed, the string `-- RENDER --` would be hidden from the render.
+
+- `RENDER_SIGNS_JOINER`
+  Default Value: `<br />`. Set to the string that should be used to join the lines on the sign while rendering. Value of `"<br />"` will make each in-game line it's own line on the render. A value of `" "` will make all the in-game lines a single line on the render.
