@@ -7,12 +7,19 @@ def playerIcons(poi):
         return "Last known location for {}".format(poi['EntityId'])
 
 
-# Only signs with "-- RENDER --" in them, and no others. Otherwise, people
-# can't have secret bases and the render is too busy anyways.
+# Only render the signs with the filter string (stored in environment variable
+# RENDER_SIGNS_FILTER) in them. If RENDER_SIGNS_FILTER is blank or unset,
+# render all signs. RENDER_SIGNS_FILTER defaults to "-- RENDER --" for historic
+# reasons, but also so that people can have secret bases and to keep the render
+# fairly clean.
 def signFilter(poi):
+    # Because of how Overviewer reads this file, we must "import os" again here.
+    import os
     if poi['id'] in ['Sign', 'minecraft:sign']:
-        if '-- RENDER --' in poi.values():
-            return "\n".join([poi['Text1'], poi['Text2'], poi['Text3'], poi['Text4']])
+        sign_filter_string = os.environ.get('RENDER_SIGNS_FILTER', "")
+        render_all_signs = len(sign_filter_string) == 0
+        if render_all_signs or sign_filter_string in poi.values():
+            return "<br />".join([poi['Text1'], poi['Text2'], poi['Text3'], poi['Text4']])
 
 
 worlds['minecraft'] = "/home/minecraft/server/world"
