@@ -14,21 +14,19 @@ def signFilter(poi):
     import os
     # Only render signs with this function
     if poi['id'] in ['Sign', 'minecraft:sign']:
-        sign_joiner = os.environ.get('RENDER_SIGNS_JOINER', "<br />")
-        sign_filter = os.environ.get('RENDER_SIGNS_FILTER', "")
+        sign_filter = os.environ['RENDER_SIGNS_FILTER']
         hide_filter = os.environ.get('RENDER_SIGNS_HIDE_FILTER', 'false').lower() == 'true'
-        # Transform the lines into an array.
-        lines = [poi['Text1'], poi['Text2'], poi['Text3'], poi['Text4']]
-        lines = list(map(lambda l: l.strip(), lines))
+        # Transform the lines into an array and strip whitespace from each line.
+        lines = list(map(lambda l: l.strip(),[poi['Text1'], poi['Text2'], poi['Text3'], poi['Text4']]))
         # Determine if we should render this sign
         render_all_signs = len(sign_filter) == 0
-        render_this_sign = sign_filter.upper() in map(lambda l: l.upper(), lines)
+        render_this_sign = sign_filter in lines
         if render_all_signs or render_this_sign:
             # If the user wants to strip the filter string, we do that here. Only
             # do this if sign_filter isn't blank.
             if hide_filter and not render_all_signs:
                 lines = list(filter(lambda l: l != sign_filter, lines))
-            return sign_joiner.join(lines)
+            return os.environ['RENDER_SIGNS_JOINER'].join(lines)
 
 
 worlds['minecraft'] = "/home/minecraft/server/world"
