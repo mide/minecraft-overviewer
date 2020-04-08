@@ -7,12 +7,26 @@ def playerIcons(poi):
         return "Last known location for {}".format(poi['EntityId'])
 
 
-# Only signs with "-- RENDER --" in them, and no others. Otherwise, people
-# can't have secret bases and the render is too busy anyways.
+# Only render the signs with the filter string in them. If filter string is
+# blank or unset, render all signs. Lines are joined with a configurable string.
 def signFilter(poi):
+    # Because of how Overviewer reads this file, we must "import os" again here.
+    import os
+    # Only render signs with this function
     if poi['id'] in ['Sign', 'minecraft:sign']:
-        if '-- RENDER --' in poi.values():
-            return "\n".join([poi['Text1'], poi['Text2'], poi['Text3'], poi['Text4']])
+        sign_filter = os.environ['RENDER_SIGNS_FILTER']
+        hide_filter = os.environ['RENDER_SIGNS_HIDE_FILTER'] == 'true'
+        # Transform the lines into an array and strip whitespace from each line.
+        lines = list(map(lambda l: l.strip(),[poi['Text1'], poi['Text2'], poi['Text3'], poi['Text4']]))
+        # Determine if we should render this sign
+        render_all_signs = len(sign_filter) == 0
+        render_this_sign = sign_filter in lines
+        if render_all_signs or render_this_sign:
+            # If the user wants to strip the filter string, we do that here. Only
+            # do this if sign_filter isn't blank.
+            if hide_filter and not render_all_signs:
+                lines = list(filter(lambda l: l != sign_filter, lines))
+            return os.environ['RENDER_SIGNS_JOINER'].join(lines)
 
 
 worlds['minecraft'] = "/home/minecraft/server/world"
