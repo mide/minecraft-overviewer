@@ -8,9 +8,17 @@ if [ -z "$MINECRAFT_VERSION" ]; then
 fi
 
 # Download Minecraft client .jar (Contains textures used by Minecraft Overviewer)
-CLIENT_URL=$(python3 /home/minecraft/download_url.py "$MINECRAFT_VERSION")
-echo "Using Client URL $CLIENT_URL."
-wget -N "${CLIENT_URL}" -O "${MINECRAFT_VERSION}.jar" -P /home/minecraft/.minecraft/versions/${MINECRAFT_VERSION}/
+# We only download if the client doesn't exist. In most cases, it won't exist
+# because the directory isn't a volume and the Docker container will be a fresh
+# slate. This check enables power-users to mount the /home/minecraft/.minecraft/
+# directory and prevent downloading if the file exists.
+if [ -f "/home/minecraft/.minecraft/versions/${MINECRAFT_VERSION}/${MINECRAFT_VERSION}.jar" ]; then
+    echo "Minecraft client ${MINECRAFT_VERSION}.jar exists! Skipping download."
+else
+    CLIENT_URL=$(python3 /home/minecraft/download_url.py "${MINECRAFT_VERSION}")
+    echo "Using Client URL ${CLIENT_URL} to download ${MINECRAFT_VERSION}.jar."
+    wget "${CLIENT_URL}" -O "${MINECRAFT_VERSION}.jar" -P /home/minecraft/.minecraft/versions/${MINECRAFT_VERSION}/
+fi
 
 # Render the Map
 if [ "$RENDER_MAP" == "true" ]; then
