@@ -17,6 +17,12 @@ ENV RENDER_POI true
 # Only render signs including this string, leave blank to render all signs
 ENV RENDER_SIGNS_FILTER "-- RENDER --"
 
+# Hide the filter string from the render
+ENV RENDER_SIGNS_HIDE_FILTER "false"
+
+# What to join the lines of the sign with when rendering POI
+ENV RENDER_SIGNS_JOINER "<br />"
+
 ENV CONFIG_LOCATION /home/minecraft/config.py
 
 RUN apt-get update && \
