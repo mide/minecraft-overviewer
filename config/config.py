@@ -15,7 +15,7 @@ def signFilter(poi):
     # Only render signs with this function
     if poi['id'] in ['Sign', 'minecraft:sign']:
         sign_filter = os.environ['RENDER_SIGNS_FILTER']
-        hide_filter = os.environ['RENDER_SIGNS_HIDE_FILTER'].lower() == 'true'
+        hide_filter = os.environ['RENDER_SIGNS_HIDE_FILTER'] == 'true'
         # Transform the lines into an array and strip whitespace from each line.
         lines = list(map(lambda l: l.strip(),[poi['Text1'], poi['Text2'], poi['Text3'], poi['Text4']]))
         # Determine if we should render this sign
