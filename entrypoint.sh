@@ -17,7 +17,8 @@ if [ -f "/home/minecraft/.minecraft/versions/${MINECRAFT_VERSION}/${MINECRAFT_VE
 else
     CLIENT_URL=$(python3 /home/minecraft/download_url.py "${MINECRAFT_VERSION}")
     echo "Using Client URL ${CLIENT_URL} to download ${MINECRAFT_VERSION}.jar."
-    wget "${CLIENT_URL}" -O "${MINECRAFT_VERSION}.jar" -P /home/minecraft/.minecraft/versions/${MINECRAFT_VERSION}/
+    mkdir -p "/home/minecraft/.minecraft/versions/${MINECRAFT_VERSION}/"
+    wget "${CLIENT_URL}" -O "/home/minecraft/.minecraft/versions/${MINECRAFT_VERSION}/${MINECRAFT_VERSION}.jar"
 fi
 
 # Render the Map
