@@ -21,6 +21,24 @@ else
     wget "${CLIENT_URL}" -O "/home/minecraft/.minecraft/versions/${MINECRAFT_VERSION}/${MINECRAFT_VERSION}.jar"
 fi
 
+# DEPRECATION WARNING
+if grep -q "texturepath" "${CONFIG_LOCATION}"; then
+  NEW_LOCATION="/home/minecraft/.minecraft/versions/${MINECRAFT_VERSION}/${MINECRAFT_VERSION}.jar"
+  OLD_LOCATION="/home/minecraft/${MINECRAFT_VERSION}.jar"
+  echo "----------------------------------------------------------------------"
+  echo "                         DEPRECATION WARNING!                         "
+  echo "----------------------------------------------------------------------"
+  echo "The texture file location has changed and 'texturepath' set in your   "
+  echo "config.py! Either update your configuration to point to the new       "
+  echo "location, or remove that line. We will copy the texturepath into the  "
+  echo "old location for now. On or around July 31, 2020, we will drop support"
+  echo "for the old location.                                                 "
+  echo "Old Location: ${OLD_LOCATION}                                         "
+  echo "New Location: ${NEW_LOCATION}                                         "
+  echo "----------------------------------------------------------------------"
+  cp "${NEW_LOCATION}" "${OLD_LOCATION}"
+fi
+
 # Render the Map
 if [ "$RENDER_MAP" == "true" ]; then
   overviewer.py --config "$CONFIG_LOCATION" $ADDITIONAL_ARGS
