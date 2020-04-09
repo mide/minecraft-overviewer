@@ -21,7 +21,7 @@ else
     wget "${CLIENT_URL}" -O "/home/minecraft/.minecraft/versions/${MINECRAFT_VERSION}/${MINECRAFT_VERSION}.jar"
 fi
 
-# DEPRECATION WARNING
+# DEPRECATION WARNING - TODO: Remove this block on or around July 31, 2020.
 if grep -q "texturepath" "${CONFIG_LOCATION}"; then
   NEW_LOCATION="/home/minecraft/.minecraft/versions/${MINECRAFT_VERSION}/${MINECRAFT_VERSION}.jar"
   OLD_LOCATION="/home/minecraft/${MINECRAFT_VERSION}.jar"
