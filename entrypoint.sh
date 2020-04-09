@@ -28,7 +28,7 @@ if grep -q "texturepath" "${CONFIG_LOCATION}"; then
   echo "----------------------------------------------------------------------"
   echo "                         DEPRECATION WARNING!                         "
   echo "----------------------------------------------------------------------"
-  echo "The texture file location has changed and 'texturepath' set in your   "
+  echo "The texture file location has changed and 'texturepath' is set in your"
   echo "config.py! Either update your configuration to point to the new       "
   echo "location, or remove that line. We will copy the texturepath into the  "
   echo "old location for now. On or around July 31, 2020, we will drop support"
