@@ -25,9 +25,12 @@ ENV RENDER_SIGNS_JOINER "<br />"
 
 ENV CONFIG_LOCATION /home/minecraft/config.py
 
-# Docs for rcon-cli here: https://github.com/itzg/rcon-cli
-ENV RCON_ARGS_PRE ""
-ENV RCON_ARGS_POST ""
+# Install rcon-cli (https://github.com/itzg/rcon-cli). Perform a checksum check
+# to make sure it hasn't changed from underneath us.
+ENV RCON_CLI_URL "https://github.com/itzg/rcon-cli/releases/download/1.4.7/rcon-cli_1.4.7_linux_amd64.tar.gz"
+ENV RCON_CLI_SHA256 "cae03daceb3c463f0979ed0586778fb236cfbb83585413a9a06b1e83bceefa20"
+ENV RCON_CLI_ARGS_PRE_RENDER ""
+ENV RCON_CLI_ARGS_POST_RENDER ""
 
 RUN apt-get update && \
     apt-get install -y wget gnupg optipng && \
@@ -40,8 +43,9 @@ RUN apt-get update && \
     useradd -m minecraft && \
     mkdir -p /home/minecraft/render /home/minecraft/server
 
-# Install rcon-cli
-RUN wget "https://github.com/itzg/rcon-cli/releases/download/1.4.7/rcon-cli_1.4.7_linux_amd64.tar.gz" -O /tmp/rcon-cli.tgz && \
+# Install rcon-cli to support issuing RCON commands before/after the render
+RUN wget "${RCON_CLI_URL}" -O "/tmp/rcon-cli.tgz" && \
+    echo "${RCON_CLI_SHA256}  /tmp/rcon-cli.tgz" | sha256sum -c - && \
     tar -xf /tmp/rcon-cli.tgz -C /usr/local/bin rcon-cli && \
     rm /tmp/rcon-cli.tgz
 

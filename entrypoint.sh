@@ -39,9 +39,10 @@ if grep -q "texturepath" "${CONFIG_LOCATION}"; then
   cp "${NEW_LOCATION}" "${OLD_LOCATION}"
 fi
 
-if [ -n "$RCON_ARGS_PRE" ]; then
+if [ -n "$RCON_CLI_ARGS_PRE_RENDER" ]; then
+  echo "Running rcon-cli before starting render..."
   # shellcheck disable=SC2086
-  rcon-cli $RCON_ARGS_PRE
+  rcon-cli $RCON_CLI_ARGS_PRE_RENDER
 fi
 
 # Render the Map
@@ -54,7 +55,8 @@ if [ "$RENDER_POI" == "true" ]; then
   overviewer.py --config "$CONFIG_LOCATION" --genpoi $ADDITIONAL_ARGS_POI
 fi
 
-if [ -n "$RCON_ARGS_POST" ]; then
+if [ -n "$RCON_CLI_ARGS_POST_RENDER" ]; then
+  echo "Running rcon-cli after finishing render..."
   # shellcheck disable=SC2086
-  rcon-cli $RCON_ARGS_POST
+  rcon-cli $RCON_CLI_ARGS_POST_RENDER
 fi

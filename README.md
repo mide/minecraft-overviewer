@@ -38,6 +38,12 @@ docker run \
 - `CONFIG_LOCATION`
   Default Value: `/home/minecraft/config.py`. Set to a different path to override the provided configuration. This only makes sense if you have a different configuration in a volume.
 
+- `RCON_CLI_ARGS_POST_RENDER`
+  Default Value: _null_. Set to contain any [Minecraft RCON](https://wiki.vg/RCON) command you'd like to have run after the render completes. This uses [`itzg/rcon-cli`](https://github.com/itzg/rcon-cli), so please refer to that project for full list of available options. Could be used to issue `save on` to re-enable file writes once done rendering.
+
+- `RCON_CLI_ARGS_PRE_RENDER`
+  Default Value: _null_. Set to contain any [Minecraft RCON](https://wiki.vg/RCON) command you'd like to have run before the render starts. This uses [`itzg/rcon-cli`](https://github.com/itzg/rcon-cli), so please refer to that project for full list of available options. Could be used to issue `save off` to prevent file changes while rendering.
+
 - `RENDER_MAP`
   Default Value: `true`. Set to `false` if you do not want to render the map. This is useful for POI only-updates.
 
