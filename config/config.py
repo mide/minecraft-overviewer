@@ -17,7 +17,7 @@ def signFilter(poi):
         sign_filter = os.environ['RENDER_SIGNS_FILTER']
         hide_filter = os.environ['RENDER_SIGNS_HIDE_FILTER'] == 'true'
         # Transform the lines into an array and strip whitespace from each line.
-        lines = list(map(lambda l: l.strip(),[poi['Text1'], poi['Text2'], poi['Text3'], poi['Text4']]))
+        lines = list(map(lambda l: l.strip(), [poi['Text1'], poi['Text2'], poi['Text3'], poi['Text4']]))
         # Remove all leading and trailing empty lines
         while lines and not lines[0]:
             del lines[0]
