@@ -18,6 +18,11 @@ def signFilter(poi):
         hide_filter = os.environ['RENDER_SIGNS_HIDE_FILTER'] == 'true'
         # Transform the lines into an array and strip whitespace from each line.
         lines = list(map(lambda l: l.strip(),[poi['Text1'], poi['Text2'], poi['Text3'], poi['Text4']]))
+        # Remove all leading and trailing empty lines
+        while lines and not lines[0]:
+            del lines[0]
+        while lines and not lines[-1]:
+            del lines[-1]
         # Determine if we should render this sign
         render_all_signs = len(sign_filter) == 0
         render_this_sign = sign_filter in lines
