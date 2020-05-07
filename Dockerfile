@@ -33,7 +33,8 @@ RUN apt-get update && \
     apt-get install -y minecraft-overviewer && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-    useradd -m minecraft && \
+    groupadd minecraft -g 1000 && \
+    useradd -m minecraft -u 1000 -g 1000 && \
     mkdir -p /home/minecraft/render /home/minecraft/server
 
 COPY config/config.py /home/minecraft/config.py
