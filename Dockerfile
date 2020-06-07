@@ -31,6 +31,7 @@ RUN apt-get update && \
     wget -O - https://overviewer.org/debian/overviewer.gpg.asc | apt-key add - && \
     apt-get update && \
     apt-get install -y --no-install-recommends minecraft-overviewer && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     useradd -m minecraft && \
     mkdir -p /home/minecraft/render /home/minecraft/server
 
