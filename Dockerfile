@@ -37,10 +37,10 @@ RUN apt-get update && \
     echo "deb http://overviewer.org/debian ./" >> /etc/apt/sources.list && \
     wget -O - https://overviewer.org/debian/overviewer.gpg.asc | apt-key add - && \
     apt-get update && \
-    apt-get install -y minecraft-overviewer && \
-    apt-get clean && \
+    apt-get install -y --no-install-recommends minecraft-overviewer && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-    useradd -m minecraft && \
+    groupadd minecraft -g 1000 && \
+    useradd -m minecraft -u 1000 -g 1000 && \
     mkdir -p /home/minecraft/render /home/minecraft/server
 
 # Install rcon-cli to support issuing RCON commands before/after the render
