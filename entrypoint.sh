@@ -21,7 +21,7 @@ else
     wget "${CLIENT_URL}" -O "/home/minecraft/.minecraft/versions/${MINECRAFT_VERSION}/${MINECRAFT_VERSION}.jar"
 fi
 
-# DEPRECATION WARNING - TODO: Remove this block on or around July 31, 2020.
+# DEPRECATION WARNING - TODO: Remove this block on or around September 30, 2020.
 if grep -q "texturepath" "${CONFIG_LOCATION}"; then
   NEW_LOCATION="/home/minecraft/.minecraft/versions/${MINECRAFT_VERSION}/${MINECRAFT_VERSION}.jar"
   OLD_LOCATION="/home/minecraft/${MINECRAFT_VERSION}.jar"
@@ -31,8 +31,8 @@ if grep -q "texturepath" "${CONFIG_LOCATION}"; then
   echo "The texture file location has changed and 'texturepath' is set in your"
   echo "config.py! Either update your configuration to point to the new       "
   echo "location, or remove that line. We will copy the texturepath into the  "
-  echo "old location for now. On or around July 31, 2020, we will drop support"
-  echo "for the old location.                                                 "
+  echo "old location for now. On or around September 30, 2020, we will drop   "
+  echo "support for the old location.                                         "
   echo "Old Location: ${OLD_LOCATION}                                         "
   echo "New Location: ${NEW_LOCATION}                                         "
   echo "----------------------------------------------------------------------"
