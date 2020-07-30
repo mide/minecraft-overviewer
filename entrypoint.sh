@@ -36,7 +36,6 @@ if grep -q "texturepath" "${CONFIG_LOCATION}"; then
   echo "Old Location: ${OLD_LOCATION}                                         "
   echo "New Location: ${NEW_LOCATION}                                         "
   echo "----------------------------------------------------------------------"
-  cp "${NEW_LOCATION}" "${OLD_LOCATION}"
 fi
 
 # Render the Map
