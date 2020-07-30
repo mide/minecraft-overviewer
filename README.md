@@ -2,13 +2,13 @@
 
 [![Docker](https://img.shields.io/docker/pulls/mide/minecraft-overviewer.svg)](https://hub.docker.com/r/mide/minecraft-overviewer/) [![Docker](https://img.shields.io/docker/stars/mide/minecraft-overviewer.svg)](https://hub.docker.com/r/mide/minecraft-overviewer/) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/mide/minecraft-overviewer/master/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/mide/minecraft-overviewer.svg)](https://github.com/mide/minecraft-overviewer/issues) [![Build Status](https://travis-ci.org/mide/minecraft-overviewer.svg?branch=master)](https://travis-ci.org/mide/minecraft-overviewer)
 
-Docker Image to Run [Minecraft Overviewer](https://overviewer.org/). Overviewer is a render that produces a render of a [Minecraft](https://minecraft.net/en/) world. The goal of this image is to easily run the [Minecraft Overviewer](https://overviewer.org/) project without having to worry about dependencies, and to provide sane default configurations. **This project is not official nor affiliated with the wonderful [Minecraft Overviewer](https://overviewer.org/) project**. 
+Docker Image to Run [Minecraft Overviewer](https://overviewer.org/). Overviewer is a render that produces a render of a [Minecraft](https://minecraft.net/en/) world. The goal of this image is to easily run the [Minecraft Overviewer](https://overviewer.org/) project without having to worry about dependencies, and to provide sane default configurations. **This project is not official nor affiliated with the wonderful [Minecraft Overviewer](https://overviewer.org/) project**.
 
 This project's code is hosted on [GitHub](https://github.com/mide/minecraft-overviewer), and the resulting Docker image is hosted on [Docker Hub](https://hub.docker.com/r/mide/minecraft-overviewer). Feel free to open [an issue on GitHub](https://github.com/mide/minecraft-overviewer/issues?q=is%3Aopen) if you're having problems.
 
 ## Running Minecraft Overviewer
 
-```
+```shell
 docker pull mide/minecraft-overviewer:latest
 docker run \
   --rm \
