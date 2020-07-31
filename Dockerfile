@@ -8,7 +8,7 @@
 
 FROM debian:stretch
 
-LABEL MAINTAINER = 'Mark Ide Jr (https://www.mide.io)'
+LABEL MAINTAINER='Mark Ide Jr (https://www.mide.io)'
 
 # Default to do both render Map + POI
 ENV RENDER_MAP true
@@ -26,12 +26,11 @@ ENV RENDER_SIGNS_JOINER "<br />"
 ENV CONFIG_LOCATION /home/minecraft/config.py
 
 RUN apt-get update && \
-    apt-get install -y wget gnupg optipng && \
+    apt-get install -y --no-install-recommends ca-certificates wget gnupg optipng && \
     echo "deb http://overviewer.org/debian ./" >> /etc/apt/sources.list && \
     wget -O - https://overviewer.org/debian/overviewer.gpg.asc | apt-key add - && \
     apt-get update && \
-    apt-get install -y minecraft-overviewer && \
-    apt-get clean && \
+    apt-get install -y --no-install-recommends minecraft-overviewer && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     groupadd minecraft -g 1000 && \
     useradd -m minecraft -u 1000 -g 1000 && \

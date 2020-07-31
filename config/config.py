@@ -1,3 +1,7 @@
+# This config variable is loaded into the upstream Minecraft Overviewer project,
+# so it contains undefined variables.
+# pylint: disable=undefined-variable
+
 import os
 
 
