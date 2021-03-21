@@ -44,7 +44,7 @@ def signFilter(poi):
         render_this_sign = sign_filter in lines
         if render_all_signs or render_this_sign:
             # If the user wants to strip the filter string, we do that here. Only
-            # do this if sign_filter isn"t blank.
+            # do this if sign_filter isn't blank.
             if hide_filter and not render_all_signs:
                 lines = list(filter(lambda l: l != sign_filter, lines))
             return os.environ["RENDER_SIGNS_JOINER"].join(lines)
@@ -59,57 +59,57 @@ markers = [
 ]
 
 renders["day"] = {
-    "world": "minecraft",
     "title": "Day",
-    "rendermode": "smooth_lighting",
     "dimension": "overworld",
     "markers": markers,
+    "rendermode": "smooth_lighting",
+    "world": "minecraft",
 }
 
 renders["night"] = {
-    "world": "minecraft",
     "title": "Night",
-    "rendermode": "smooth_night",
     "dimension": "overworld",
     "markers": markers,
+    "rendermode": "smooth_night",
+    "world": "minecraft",
 }
 
 renders["nether"] = {
-    "world": "minecraft",
     "title": "Nether",
-    "rendermode": "nether_smooth_lighting",
     "dimension": "nether",
     "markers": markers,
+    "rendermode": "nether_smooth_lighting",
+    "world": "minecraft",
 }
 
 renders["end"] = {
-    "world": "minecraft",
     "title": "End",
-    "rendermode": [Base(), EdgeLines(), SmoothLighting(strength=0.5)],
     "dimension": "end",
     "markers": markers,
+    "rendermode": [Base(), EdgeLines(), SmoothLighting(strength=0.5)],
+    "world": "minecraft",
 }
 
 renders["overlay_biome"] = {
-    "world": "minecraft",
-    "rendermode": [ClearBase(), BiomeOverlay()],
     "title": "Biome Coloring Overlay",
     "dimension": "overworld",
     "overlay": ["day"],
+    "rendermode": [ClearBase(), BiomeOverlay()],
+    "world": "minecraft",
 }
 
 renders["overlay_mobs"] = {
-    "world": "minecraft",
-    "rendermode": [ClearBase(), SpawnOverlay()],
     "title": "Mob Spawnable Areas Overlay",
     "dimension": "overworld",
     "overlay": ["day"],
+    "rendermode": [ClearBase(), SpawnOverlay()],
+    "world": "minecraft",
 }
 
 renders["overlay_slime"] = {
-    "world": "minecraft",
-    "rendermode": [ClearBase(), SlimeOverlay()],
     "title": "Slime Chunk Overlay",
     "dimension": "overworld",
     "overlay": ["day"],
+    "rendermode": [ClearBase(), SlimeOverlay()],
+    "world": "minecraft",
 }
