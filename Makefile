@@ -19,3 +19,7 @@ test-render:
 
 clean:
 	rm -rvf test-data/ test-data-output/
+
+lint:
+	docker pull github/super-linter
+	docker run -e RUN_LOCAL=true -v $(shell pwd):/tmp/lint github/super-linter

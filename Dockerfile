@@ -25,12 +25,15 @@ ENV RENDER_SIGNS_JOINER "<br />"
 
 ENV CONFIG_LOCATION /home/minecraft/config.py
 
+# Hadolint DL4006: Set the SHELL option -o pipefail before RUN with a pipe in it
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends ca-certificates wget gnupg optipng && \
+    apt-get install -y --no-install-recommends ca-certificates=20200601~deb9u2 wget=1.18-5+deb9u3 gnupg=2.1.18-8~deb9u4 optipng=0.7.6-1+deb9u1 && \
     echo "deb http://overviewer.org/debian ./" >> /etc/apt/sources.list && \
-    wget -O - https://overviewer.org/debian/overviewer.gpg.asc | apt-key add - && \
+    wget -q -O - https://overviewer.org/debian/overviewer.gpg.asc | apt-key add - && \
     apt-get update && \
-    apt-get install -y --no-install-recommends minecraft-overviewer && \
+    apt-get install -y --no-install-recommends minecraft-overviewer=0.16.12-0~overviewer1 && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     groupadd minecraft -g 1000 && \
     useradd -m minecraft -u 1000 -g 1000 && \

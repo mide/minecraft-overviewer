@@ -18,7 +18,8 @@ else
     CLIENT_URL=$(python3 /home/minecraft/download_url.py "${MINECRAFT_VERSION}")
     echo "Using Client URL ${CLIENT_URL} to download ${MINECRAFT_VERSION}.jar."
     mkdir -p "/home/minecraft/.minecraft/versions/${MINECRAFT_VERSION}/"
-    wget "${CLIENT_URL}" -O "/home/minecraft/.minecraft/versions/${MINECRAFT_VERSION}/${MINECRAFT_VERSION}.jar"
+    wget -q "${CLIENT_URL}" -O "/home/minecraft/.minecraft/versions/${MINECRAFT_VERSION}/${MINECRAFT_VERSION}.jar"
+    echo "Download complete."
 fi
 
 # DEPRECATION WARNING - TODO: Remove this block on or around September 30, 2020.
