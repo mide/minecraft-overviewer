@@ -1,8 +1,11 @@
 #!/bin/bash
 set -o errexit
 
-# Attempt to discover the latest version from the server logs
-MINECRAFT_VERSION=$(zgrep -h ": Starting minecraft server version " /home/minecraft/server/logs/* | awk 'NF>1{print $NF}' | sort | tail -1)
+# Attempt to discover the latest version from the server logs if not declared
+if [ -n "$MINECRAFT_VERSION" ]; then
+  MINECRAFT_VERSION=$(zgrep -h ": Starting minecraft server version " /home/minecraft/server/logs/* \
+    | awk 'NF>1{print $NF}' | sort | tail -1)
+fi
 
 # Require MINECRAFT_VERSION environment variable to be set (no default assumed)
 if [ -z "$MINECRAFT_VERSION" ]; then
