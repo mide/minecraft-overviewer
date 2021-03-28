@@ -26,7 +26,12 @@ def signFilter(poi):
         lines = list(
             map(
                 lambda l: l.strip(),
-                [poi["Text1"], poi["Text2"], poi["Text3"], poi["Text4"],],
+                [
+                    poi["Text1"],
+                    poi["Text2"],
+                    poi["Text3"],
+                    poi["Text4"],
+                ],
             )
         )
         # Remove all leading and trailing empty lines
