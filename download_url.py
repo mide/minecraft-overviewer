@@ -22,6 +22,13 @@ def get_json_from_url(url):
 def get_minecraft_download_url(version):
     data = get_json_from_url(MANIFEST_URL)
 
+    # Support to special-case versions, latest and latest_snapshot, which will
+    # always use the latest avaiable releases using the Minecraft Metadata.
+    if version == "latest":
+        version = data['latest']['release']
+    elif version == "latest_snapshot":
+        version = data['latest']['snapshot']
+
     desired_versions = list(filter(lambda v: v["id"] == version, data["versions"]))
     if len(desired_versions) == 0:
         raise RuntimeError(
