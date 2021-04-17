@@ -28,7 +28,7 @@ docker run \
 ### Required
 
 - `MINECRAFT_VERSION`
-  Set to the version of Minecraft the world is based from (Like `1.14.1`). Used for textures.
+  Set to the version of Minecraft the world is based from (Like `1.14.1`). Used for textures. You can also use the special version `latest` or `latest_snapshot` to just use the latest version (stable or snapshot, respectively).
 
 ### Optional
 
