@@ -2,6 +2,7 @@
 # so it contains undefined variables and some `import` lines.
 # flake8: noqa: F821,F401
 # pylint: disable=undefined-variable
+# type: ignore
 
 import os
 
