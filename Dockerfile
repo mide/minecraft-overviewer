@@ -8,7 +8,7 @@
 
 FROM debian:stretch
 
-LABEL MAINTAINER='Mark Ide Jr (https://www.mide.io)'
+LABEL maintainer='Mark Ide Jr (https://www.mide.io)'
 
 # --------------- #
 # OPTION DEFAULTS #
