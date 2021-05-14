@@ -26,19 +26,31 @@ ENV RENDER_SIGNS_JOINER "<br />"
 # INSTALL & CONFIGURE DEFAULTS #
 # ---------------------------- #
 
+WORKDIR /home/minecraft/
+
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends ca-certificates wget optipng python3 build-essential git python3-dev python3-numpy python3-pillow && \
+    apt-get install -y --no-install-recommends \
+        build-essential=12.3 \
+        ca-certificates=20200601~deb9u2 \
+        git=1:2.11.0-3+deb9u7 \
+        optipng=0.7.6-1+deb9u1 \
+        python3=3.5.3-1 \
+        python3-dev=3.5.3-1 \
+        python3-numpy=1:1.12.1-3 \
+        python3-pil=4.0.0-4+deb9u2 \
+        wget=1.18-5+deb9u3 && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     groupadd minecraft -g 1000 && \
     useradd -m minecraft -u 1000 -g 1000 && \
     mkdir -p /home/minecraft/render /home/minecraft/server
 
-WORKDIR /home/minecraft/
+RUN git clone --depth=1 git://github.com/overviewer/Minecraft-Overviewer.git
 
-RUN git clone --depth=1 git://github.com/overviewer/Minecraft-Overviewer.git && \
-    cd Minecraft-Overviewer/ && \
-    python3 setup.py build && \
+WORKDIR /home/minecraft/Minecraft-Overviewer/
+RUN python3 setup.py build && \
     python3 setup.py install
+
+WORKDIR /home/minecraft/
 
 COPY config/config.py /home/minecraft/config.py
 COPY entrypoint.sh /home/minecraft/entrypoint.sh
