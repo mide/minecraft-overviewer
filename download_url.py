@@ -7,7 +7,8 @@ import json
 import os
 import urllib.request
 
-MANIFEST_URL = "https://launchermeta.mojang.com/mc/game/version_manifest.json"
+MANIFEST_URL = os.environ["MANIFEST_URL"]
+
 
 def get_json_from_url(url):
     if not url.startswith("https://"):

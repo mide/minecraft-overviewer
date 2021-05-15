@@ -7,7 +7,7 @@ if [ -z "$MINECRAFT_VERSION" ]; then
   exit 1
 fi
 
-MANIFEST_URL="https://launchermeta.mojang.com/mc/game/version_manifest.json"
+export MANIFEST_URL="https://launchermeta.mojang.com/mc/game/version_manifest.json"
 
 if [ "$MINECRAFT_VERSION" == "latest" ]; then
   MINECRAFT_VERSION=$(curl -s "$MANIFEST_URL" | jq -r ".latest.release")
