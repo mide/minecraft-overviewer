@@ -7,6 +7,14 @@ if [ -z "$MINECRAFT_VERSION" ]; then
   exit 1
 fi
 
+MANIFEST_URL="https://launchermeta.mojang.com/mc/game/version_manifest.json"
+
+if [ "$MINECRAFT_VERSION" == "latest" ]; then
+  MINECRAFT_VERSION=$(curl -s "$MANIFEST_URL" | jq -r ".latest.release")
+elif [ "$MINECRAFT_VERSION" == "latest_snapshot" ]; then
+  MINECRAFT_VERSION=$(curl -s "$MANIFEST_URL" | jq -r ".latest.snapshot")
+fi
+
 # Download Minecraft client .jar (Contains textures used by Minecraft Overviewer)
 # We only download if the client doesn't exist. In most cases, it won't exist
 # because the directory isn't a volume and the Docker container will be a fresh
