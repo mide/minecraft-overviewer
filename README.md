@@ -17,18 +17,20 @@ This project's code is hosted on [GitHub](https://github.com/mide/minecraft-over
 docker pull mide/minecraft-overviewer:latest
 docker run \
   --rm \
-  -e MINECRAFT_VERSION="1.14.1" \
+  -e MINECRAFT_VERSION="1.17" \
   -v /home/user/minecraft/:/home/minecraft/server/:ro \
   -v /srv/http/minecraft/:/home/minecraft/render/:rw \
   mide/minecraft-overviewer:latest
 ```
+
+_Note:_ The `latest` Docker tag is rebuilt daily. If there are changes to the [upstream project](https://github.com/overviewer/Minecraft-Overviewer/), it may take up to 24 hours for the new image to contain them.
 
 ## Environment Variables
 
 ### Required
 
 - `MINECRAFT_VERSION`
-  Set to the version of Minecraft the world is based from (Like `1.14.1`). Used for textures. You can also use the special version `latest` or `latest_snapshot` to just use the latest version (stable or snapshot, respectively).
+  Set to the version of Minecraft the world is based from (Like `1.17`). Used for textures. You can also use the special version `latest` or `latest_snapshot` to just use the latest version (stable or snapshot, respectively).
 
 ### Optional
 
