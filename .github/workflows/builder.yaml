@@ -25,4 +25,3 @@ jobs:
         with:
           push: true
           tags: mide/minecraft-overviewer:latest
-
