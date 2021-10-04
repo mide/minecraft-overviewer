@@ -44,7 +44,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         build-essential=12.3 \
         ca-certificates=20200601~deb9u2 \
-        curl=7.52.1-5+deb9u15 \
+        curl=7.52.1-5+deb9u16 \
         git=1:2.11.0-3+deb9u7 \
         jq=1.5+dfsg-1.3 \
         optipng=0.7.6-1+deb9u1 \
