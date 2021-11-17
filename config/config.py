@@ -53,6 +53,7 @@ def signFilter(poi):
 
 worlds["minecraft"] = "/home/minecraft/server/world"
 outputdir = "/home/minecraft/render/"
+texturepath = "/home/minecraft/.minecraft/versions/" + os.environ["MINECRAFT_VERSION"] + "/" + os.environ["MINECRAFT_VERSION"] + ".jar"
 
 markers = [
     dict(name="Players", filterFunction=playerIcons),
