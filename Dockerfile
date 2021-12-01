@@ -21,6 +21,8 @@ ENV RENDER_POI "true"
 ENV RENDER_SIGNS_FILTER "-- RENDER --"
 ENV RENDER_SIGNS_HIDE_FILTER "false"
 ENV RENDER_SIGNS_JOINER "<br />"
+ENV PUID 1000
+ENV PGID 1000
 
 # ---------------------------- #
 # INSTALL & CONFIGURE DEFAULTS #
@@ -71,7 +73,5 @@ COPY entrypoint.sh /home/minecraft/entrypoint.sh
 COPY download_url.py /home/minecraft/download_url.py
 
 RUN chown minecraft:minecraft -R /home/minecraft/
-
-USER minecraft
 
 CMD ["bash", "/home/minecraft/entrypoint.sh"]
