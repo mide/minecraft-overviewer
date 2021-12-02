@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ $(id -u) = 0 ]; then
-  usermod -u ${PUID} minecraft > /dev/null 2>&1
-  groupmod -g ${PGID} minecraft > /dev/null 2>&1
+  usermod -u ${UID} minecraft > /dev/null 2>&1
+  groupmod -g ${GID} minecraft > /dev/null 2>&1
   chown -R minecraft:minecraft /home/minecraft/render
   su -c "bash $0" minecraft
 else
