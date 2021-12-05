@@ -1,8 +1,13 @@
 #!/bin/bash
 if [ $(id -u) = 0 ]; then
+  echo "UID: ${UID}"
   usermod -u ${UID} minecraft > /dev/null 2>&1
+  echo "GID: ${GID}"
   groupmod -g ${GID} minecraft > /dev/null 2>&1
+  echo "Updating permissions..."
   chown -R minecraft:minecraft /home/minecraft/render
+  echo "Done."
+  echo "Starting Overviewer."
   su -c "bash $0" minecraft
 else
 
