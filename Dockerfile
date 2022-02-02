@@ -50,7 +50,7 @@ RUN apt-get update && \
         optipng=0.7.6-1+deb9u1 \
         python3-dev=3.5.3-1 \
         python3-numpy=1:1.12.1-3 \
-        python3-pil=4.0.0-4+deb9u3 \
+        python3-pil=4.0.0-4+deb9u4 \
         python3=3.5.3-1 \
         wget=1.18-5+deb9u3 && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
