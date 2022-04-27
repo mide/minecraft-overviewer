@@ -11,8 +11,10 @@ export MANIFEST_URL="https://launchermeta.mojang.com/mc/game/version_manifest.js
 
 if [ "$MINECRAFT_VERSION" == "latest" ]; then
   MINECRAFT_VERSION=$(curl -s "$MANIFEST_URL" | jq -r ".latest.release")
+  echo "User specified \$MINECRAFT_VERSION=\"latest\". Substituting with \"$MINECRAFT_VERSION\"."
 elif [ "$MINECRAFT_VERSION" == "latest_snapshot" ]; then
   MINECRAFT_VERSION=$(curl -s "$MANIFEST_URL" | jq -r ".latest.snapshot")
+  echo "User specified \$MINECRAFT_VERSION=\"latest_snapshot\". Substituting with \"$MINECRAFT_VERSION\"."
 fi
 
 # Download Minecraft client .jar (Contains textures used by Minecraft Overviewer)
