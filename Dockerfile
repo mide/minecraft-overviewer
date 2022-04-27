@@ -8,6 +8,14 @@
 
 FROM debian:stretch
 
+# -------------------- #
+# BUILD-TIME ARGUMENTS #
+# -------------------- #
+
+ARG GITHUB_REF
+ARG GITHUB_REPOSITORY
+ARG GITHUB_SHA
+
 LABEL maintainer='Mark Ide Jr (https://www.mide.io)'
 
 # --------------- #
@@ -69,6 +77,9 @@ WORKDIR /home/minecraft/
 COPY config/config.py /home/minecraft/config.py
 COPY entrypoint.sh /home/minecraft/entrypoint.sh
 COPY download_url.py /home/minecraft/download_url.py
+
+# Add some timestamps / build information into the image
+RUN printf "GITHUB_REF=%s\nGITHUB_REPOSITORY=%s\nGITHUB_SHA=%s\nBUILD_DATE=$(date -u)\n" "$GITHUB_REF" "$GITHUB_REPOSITORY" "$GITHUB_SHA" > /home/minecraft/build-details.txt
 
 RUN chown minecraft:minecraft -R /home/minecraft/
 
