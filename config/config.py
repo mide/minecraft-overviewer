@@ -4,6 +4,10 @@
 # pylint: disable=undefined-variable
 # type: ignore
 
+# Regarding `global`, see
+# https://docs.overviewer.org/en/latest/signs/#filter-functions
+global html
+import html
 import os
 
 
@@ -48,7 +52,7 @@ def signFilter(poi):
             # do this if sign_filter isn't blank.
             if hide_filter and not render_all_signs:
                 lines = list(filter(lambda l: l != sign_filter, lines))
-            return os.environ["RENDER_SIGNS_JOINER"].join(lines)
+            return html.escape(os.environ["RENDER_SIGNS_JOINER"].join(lines))
 
 
 worlds["minecraft"] = "/home/minecraft/server/world"
