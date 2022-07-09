@@ -1,4 +1,16 @@
 #!/bin/bash
+if [ $(id -u) = 0 ]; then
+  echo "UID: ${UID}"
+  usermod -u ${UID} minecraft > /dev/null 2>&1
+  echo "GID: ${GID}"
+  groupmod -g ${GID} minecraft > /dev/null 2>&1
+  echo "Updating permissions..."
+  chown -R minecraft:minecraft /home/minecraft/render
+  echo "Done."
+  echo "Starting Overviewer."
+  su -c "bash $0" minecraft
+else
+
 set -o errexit
 
 # Require MINECRAFT_VERSION environment variable to be set (no default assumed)
@@ -44,4 +56,6 @@ if [ "$RENDER_POI" == "true" ]; then
 # (We disable to support passing multiple arguments)
   # shellcheck disable=SC2086
   overviewer.py --config "$CONFIG_LOCATION" --genpoi $ADDITIONAL_ARGS_POI
+fi
+
 fi

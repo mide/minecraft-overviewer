@@ -29,6 +29,8 @@ ENV RENDER_POI "true"
 ENV RENDER_SIGNS_FILTER "-- RENDER --"
 ENV RENDER_SIGNS_HIDE_FILTER "false"
 ENV RENDER_SIGNS_JOINER "<br />"
+ENV UID 1000
+ENV GID 1000
 
 # ---------------------------- #
 # INSTALL & CONFIGURE DEFAULTS #
@@ -82,7 +84,5 @@ COPY download_url.py /home/minecraft/download_url.py
 RUN printf "GITHUB_REF=%s\nGITHUB_REPOSITORY=%s\nGITHUB_SHA=%s\nBUILD_DATE=$(date -u)\n" "$GITHUB_REF" "$GITHUB_REPOSITORY" "$GITHUB_SHA" > /home/minecraft/build-details.txt
 
 RUN chown minecraft:minecraft -R /home/minecraft/
-
-USER minecraft
 
 CMD ["bash", "/home/minecraft/entrypoint.sh"]
