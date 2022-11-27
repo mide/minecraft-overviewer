@@ -14,12 +14,12 @@ This project's code is hosted on [GitHub](https://github.com/mide/minecraft-over
 ## Running Minecraft Overviewer
 
 ```shell
-docker pull mide/minecraft-overviewer:latest
-docker run \
-  --rm \
+docker run -d \
+  --name minecraft-overviewer \
+  --restart=unless-stopped \
   -e MINECRAFT_VERSION="1.17" \
-  -v /home/user/minecraft/:/home/minecraft/server/:ro \
-  -v /srv/http/minecraft/:/home/minecraft/render/:rw \
+  -v /home/USER/minecraft/map:/home/minecraft/server/world:ro \
+  -v /home/USER/minecraft/overviewer:/home/minecraft/render/:rw \
   mide/minecraft-overviewer:latest
 ```
 
@@ -31,6 +31,10 @@ _Note:_ The `latest` Docker tag is rebuilt daily. If there are changes to the [u
 
 - `MINECRAFT_VERSION`
   Set to the version of Minecraft the world is based from (Like `1.17`). Used for textures. You can also use the special version `latest` or `latest_snapshot` to just use the latest version (stable or snapshot, respectively).
+  
+- Mapped volumes
+1) `/home/USER/minecraft/map` is the path to the minecraft world map folder (read only)
+2) `/home/USER/minecraft/overviewer` is the path to the folder where overviewer files will be saved (read/write)
 
 ### Optional
 
