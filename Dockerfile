@@ -55,12 +55,12 @@ RUN apt-get update && \
         curl=7.74.0-1.3+deb11u7 \
         git=1:2.30.2-1+deb11u2 \
         jq=1.6-2.1 \
-        optipng=0.7.7-1 \
         python3-dev=3.9.2-3 \
         python3-numpy=1:1.19.5-1 \
         python3-pil=8.1.2+dfsg-0.3+deb11u1 \
         python3=3.9.2-3 \
         wget=1.21-1+deb11u1 && \
+    apt-get install -y --no-install-recommends optipng=0.7.7-1+b1 || apt-get install -y --no-install-recommends optipng=0.7.7-1 && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     groupadd minecraft -g 1000 && \
     useradd -m minecraft -u 1000 -g 1000 && \
