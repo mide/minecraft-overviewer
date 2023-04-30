@@ -1,6 +1,16 @@
 #!/bin/bash
 set -o errexit
 
+# https://github.com/overviewer/Minecraft-Overviewer/commit/13c1bddaf65dfaaf6c4c7a396c94db75bed4c089
+echo "---------------------------------------------------------------------------"
+echo "                                  WARNING!                                 "
+echo "---------------------------------------------------------------------------"
+echo "The upstream Minecraft-Overviewer project is no longer being maintained.   "
+echo "As this project relies entirely on Minecraf-Overviewer, some known issues  "
+echo "may remain open. Check out the project's official page for more details:   "
+echo "https://github.com/overviewer/Minecraft-Overviewer                         "
+echo "---------------------------------------------------------------------------"
+
 # Require MINECRAFT_VERSION environment variable to be set (no default assumed)
 if [ -z "$MINECRAFT_VERSION" ]; then
   echo "Expecting environment variable MINECRAFT_VERSION to be set to non-empty string. Exiting."
