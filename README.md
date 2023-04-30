@@ -13,13 +13,15 @@ This project's code is hosted on [GitHub](https://github.com/mide/minecraft-over
 
 ## Running Minecraft Overviewer
 
+In the below example, `minecraft-overviewer` will read input in from `/home/user/minecraft/` and write the output to `/home/user/overviewer/`. It will run once and exit.
+
 ```shell
 docker pull mide/minecraft-overviewer:latest
 docker run \
   --rm \
-  -e MINECRAFT_VERSION="1.17" \
-  -v /home/user/minecraft/:/home/minecraft/server/:ro \
-  -v /srv/http/minecraft/:/home/minecraft/render/:rw \
+  -e MINECRAFT_VERSION="1.19.4" \
+  -v /home/user/path_to_minecraft_files/:/home/minecraft/server/:ro \
+  -v /home/user/path_to_write_overviewer_output/:/home/minecraft/render/:rw \
   mide/minecraft-overviewer:latest
 ```
 
@@ -57,3 +59,14 @@ _Note:_ The `latest` Docker tag is rebuilt daily. If there are changes to the [u
 
 - `RENDER_SIGNS_JOINER`
   Default Value: `<br />`. Set to the string that should be used to join the lines on the sign while rendering. Value of `"<br />"` will make each in-game line it's own line on the render. A value of `" "` will make all the in-game lines a single line on the render.
+
+## Mapped Directories / Volumes
+
+The following directories are read from within the context of the container. You'll want to modify your commands to ensure that the expected files end up in the correct locations inside the container.
+
+- `/home/minecraft/server/` _(Read Only)_ This is the expected directory for the Minecraft server files.
+- `/home/minecraft/render/` _(Read & Write)_ This is where Minecraft Overviewer will write the files. If you want to have it directly write to a webserver's directory, make sure you mount the output location correctly.
+
+In the example above, `-v /home/user/path_to_minecraft_files/:/home/minecraft/server/:ro` will use `/home/user/path_to_minecraft_files/` as the source of the Minecraft server files. The line `-v /home/user/path_to_write_overviewer_output/:/home/minecraft/render/:rw` tells the Docker contianer to write out to `/home/user/path_to_write_overviewer_output/`.
+
+For more information, check out the [Docker documentation on `docker run`](https://docs.docker.com/engine/reference/commandline/run/#volume).
