@@ -29,6 +29,9 @@ ENV RENDER_POI "true"
 ENV RENDER_SIGNS_FILTER "-- RENDER --"
 ENV RENDER_SIGNS_HIDE_FILTER "false"
 ENV RENDER_SIGNS_JOINER "<br />"
+ENV WORLD_PATH "/home/minecraft/server/world"
+ENV NETHER_PATH "/home/minecraft/server/world"
+ENV END_PATH "/home/minecraft/server/world"
 
 # ---------------------------- #
 # INSTALL & CONFIGURE DEFAULTS #

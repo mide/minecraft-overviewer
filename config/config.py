@@ -55,7 +55,9 @@ def signFilter(poi):
             return html.escape(os.environ["RENDER_SIGNS_JOINER"].join(lines))
 
 
-worlds["minecraft"] = "/home/minecraft/server/world"
+worlds["world"] = os.environ["WORLD_PATH"]
+worlds["nether"] = os.environ["NETHER_PATH"]
+worlds["end"] = os.environ["END_PATH"]
 outputdir = "/home/minecraft/render/"
 
 markers = [
@@ -68,7 +70,7 @@ renders["day"] = {
     "dimension": "overworld",
     "markers": markers,
     "rendermode": "smooth_lighting",
-    "world": "minecraft",
+    "world": "world",
 }
 
 renders["night"] = {
@@ -76,7 +78,7 @@ renders["night"] = {
     "dimension": "overworld",
     "markers": markers,
     "rendermode": "smooth_night",
-    "world": "minecraft",
+    "world": "world",
 }
 
 renders["nether"] = {
@@ -84,7 +86,7 @@ renders["nether"] = {
     "dimension": "nether",
     "markers": markers,
     "rendermode": "nether_smooth_lighting",
-    "world": "minecraft",
+    "world": "nether",
 }
 
 renders["end"] = {
@@ -92,7 +94,7 @@ renders["end"] = {
     "dimension": "end",
     "markers": markers,
     "rendermode": [Base(), EdgeLines(), SmoothLighting(strength=0.5)],
-    "world": "minecraft",
+    "world": "end",
 }
 
 renders["overlay_biome"] = {
@@ -100,7 +102,7 @@ renders["overlay_biome"] = {
     "dimension": "overworld",
     "overlay": ["day"],
     "rendermode": [ClearBase(), BiomeOverlay()],
-    "world": "minecraft",
+    "world": "world",
 }
 
 renders["overlay_mobs"] = {
@@ -108,7 +110,7 @@ renders["overlay_mobs"] = {
     "dimension": "overworld",
     "overlay": ["day"],
     "rendermode": [ClearBase(), SpawnOverlay()],
-    "world": "minecraft",
+    "world": "world",
 }
 
 renders["overlay_slime"] = {
@@ -116,5 +118,5 @@ renders["overlay_slime"] = {
     "dimension": "overworld",
     "overlay": ["day"],
     "rendermode": [ClearBase(), SlimeOverlay()],
-    "world": "minecraft",
+    "world": "world",
 }
