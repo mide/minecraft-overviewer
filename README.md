@@ -57,3 +57,5 @@ _Note:_ The `latest` Docker tag is rebuilt daily. If there are changes to the [u
 
 - `RENDER_SIGNS_JOINER`
   Default Value: `<br />`. Set to the string that should be used to join the lines on the sign while rendering. Value of `"<br />"` will make each in-game line it's own line on the render. A value of `" "` will make all the in-game lines a single line on the render.
+- `REFRESH_DURATION`
+  Default Value: `0`. Set to a number to regenerate the map every `REFRESH_DURATION` seconds. Disabled if set to `0`.

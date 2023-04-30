@@ -1,6 +1,22 @@
 #!/bin/bash
 set -o errexit
 
+render_map() {
+  # Render the Map
+  if [ "$RENDER_MAP" == "true" ]; then
+    # (We disable to support passing multiple arguments)
+    # shellcheck disable=SC2086
+    overviewer.py --config "$CONFIG_LOCATION" $ADDITIONAL_ARGS
+  fi
+
+  # Render the POI
+  if [ "$RENDER_POI" == "true" ]; then
+  # (We disable to support passing multiple arguments)
+    # shellcheck disable=SC2086
+    overviewer.py --config "$CONFIG_LOCATION" --genpoi $ADDITIONAL_ARGS_POI
+  fi
+}
+
 # Require MINECRAFT_VERSION environment variable to be set (no default assumed)
 if [ -z "$MINECRAFT_VERSION" ]; then
   echo "Expecting environment variable MINECRAFT_VERSION to be set to non-empty string. Exiting."
@@ -32,16 +48,12 @@ else
     echo "Download complete."
 fi
 
-# Render the Map
-if [ "$RENDER_MAP" == "true" ]; then
-  # (We disable to support passing multiple arguments)
-  # shellcheck disable=SC2086
-  overviewer.py --config "$CONFIG_LOCATION" $ADDITIONAL_ARGS
-fi
-
-# Render the POI
-if [ "$RENDER_POI" == "true" ]; then
-# (We disable to support passing multiple arguments)
-  # shellcheck disable=SC2086
-  overviewer.py --config "$CONFIG_LOCATION" --genpoi $ADDITIONAL_ARGS_POI
+# Render the map, either once if REFRESH_DURATION is 0, or every REFRESH_DURATION seconds
+if [ $REFRESH_DURATION -gt 0 ]; then
+  while true; do
+    render_map
+    sleep $REFRESH_DURATION
+  done
+else
+  render_map
 fi
