@@ -13,7 +13,7 @@ This project's code is hosted on [GitHub](https://github.com/mide/minecraft-over
 
 ## Running Minecraft Overviewer
 
-In the below example, `minecraft-overviewer` will read input in from `/home/user/minecraft/` and write the output to `/home/user/overviewer/`. It will run once and exit.
+In the below example, `minecraft-overviewer` will read input in from `/home/user/path_to_minecraft_files/` and write the output to `/home/user/path_to_write_overviewer_output/`. It will run once and exit.
 
 ```shell
 docker pull mide/minecraft-overviewer:latest
