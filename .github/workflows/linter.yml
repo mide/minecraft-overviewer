@@ -4,7 +4,7 @@ name: Lint Code Base
 on: push
 
 jobs:
-  build:
+  lint:
     name: Lint Codebase
     runs-on: ubuntu-latest
     steps:
@@ -14,13 +14,17 @@ jobs:
       - name: Lint Code Base
         uses: github/super-linter@v5
 
+  build:
+    name: Test Build
+    runs-on: ubuntu-latest
+    steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-      - name: Test Building Image
+      - name: Build Image
         uses: docker/build-push-action@v4
         with:
           push: false
