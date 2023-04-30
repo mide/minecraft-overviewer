@@ -11,6 +11,10 @@ Docker Image to Run [Minecraft Overviewer](https://overviewer.org/). Overviewer 
 
 This project's code is hosted on [GitHub](https://github.com/mide/minecraft-overviewer), and the resulting Docker image is hosted on [Docker Hub](https://hub.docker.com/r/mide/minecraft-overviewer). Feel free to open [an issue on GitHub](https://github.com/mide/minecraft-overviewer/issues?q=is%3Aopen) if you're having problems.
 
+## :construction: Maintenance Status :construction:
+
+As of [April 5, 2023](https://github.com/overviewer/Minecraft-Overviewer/commit/13c1bddaf65dfaaf6c4c7a396c94db75bed4c089), the upstream Minecraft-Overviewer project is no longer being maintained. For more information on the matter, please check the project's [Official GitHub](https://github.com/overviewer/Minecraft-Overviewer).
+
 ## Running Minecraft Overviewer
 
 In the below example, `minecraft-overviewer` will read input in from `/home/user/path_to_minecraft_files/` and write the output to `/home/user/path_to_write_overviewer_output/`. It will run once and exit.
