@@ -55,7 +55,7 @@ RUN apt-get update && \
         curl=7.74.0-1.3+deb11u7 \
         git=1:2.30.2-1+deb11u2 \
         jq=1.6-2.1 \
-        optipng=0.7.7-1 \
+        optipng=0.7.7-1+b1 \
         python3-dev=3.9.2-3 \
         python3-numpy=1:1.19.5-1 \
         python3-pil=8.1.2+dfsg-0.3+deb11u1 \

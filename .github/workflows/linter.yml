@@ -10,18 +10,21 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+
       - name: Lint Code Base
         uses: github/super-linter@v5
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
-      - name: Build and push to Docker Hub
+
+      - name: Test Building Image
         uses: docker/build-push-action@v4
         with:
           push: false
           platforms: linux/amd64,linux/arm64
-          tags: mide/minecraft-overviewer:latest
           build-args: |
             GITHUB_REF="${{ github.ref }}"
             GITHUB_REPOSITORY="${{ github.repository }}"
