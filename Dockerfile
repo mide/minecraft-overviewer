@@ -6,7 +6,7 @@
 # The Minecraft-Overviewer render will be output at
 #     /home/minecraft/render
 
-FROM debian:stretch
+FROM debian:bullseye
 
 # -------------------- #
 # BUILD-TIME ARGUMENTS #
@@ -50,17 +50,17 @@ RUN apt-get update && \
         python3 \
         wget && \
     apt-get install -y --no-install-recommends \
-        build-essential=12.3 \
-        ca-certificates=20200601~deb9u2 \
-        curl=7.52.1-5+deb9u16 \
-        git=1:2.11.0-3+deb9u7 \
-        jq=1.5+dfsg-1.3 \
-        optipng=0.7.6-1+deb9u1 \
-        python3-dev=3.5.3-1 \
-        python3-numpy=1:1.12.1-3 \
-        python3-pil=4.0.0-4+deb9u4 \
-        python3=3.5.3-1 \
-        wget=1.18-5+deb9u3 && \
+        build-essential=12.9 \
+        ca-certificates=20210119 \
+        curl=7.74.0-1.3+deb11u7 \
+        git=1:2.30.2-1+deb11u2 \
+        jq=1.6-2.1 \
+        optipng=0.7.7-1 \
+        python3-dev=3.9.2-3 \
+        python3-numpy=1:1.19.5-1 \
+        python3-pil=8.1.2+dfsg-0.3+deb11u1 \
+        python3=3.9.2-3 \
+        wget=1.21-1+deb11u1 && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     groupadd minecraft -g 1000 && \
     useradd -m minecraft -u 1000 -g 1000 && \
