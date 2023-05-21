@@ -66,7 +66,15 @@ RUN apt-get update && \
     useradd -m minecraft -u 1000 -g 1000 && \
     mkdir -p /home/minecraft/render /home/minecraft/server
 
-RUN git clone --depth=1 https://github.com/overviewer/Minecraft-Overviewer.git
+ARG OVERVIEWER_REPOSITORY=https://github.com/overviewer/Minecraft-Overviewer.git
+ARG OVERVIEWER_BRANCH=
+
+RUN printf "Cloning from <%s>, branch %s…\n" "${OVERVIEWER_REPOSITORY}" "${OVERVIEWER_BRANCH:-HEAD}"; \
+    if [ -n "$OVERVIEWER_BRANCH" ]; then \
+        git clone --depth=1 --branch "${OVERVIEWER_BRANCH}" "${OVERVIEWER_REPOSITORY}" Minecraft-Overviewer; \
+    else \
+        git clone --depth=1 "${OVERVIEWER_REPOSITORY}" Minecraft-Overviewer; \
+    fi
 
 WORKDIR /home/minecraft/Minecraft-Overviewer/
 RUN python3 setup.py build && \
@@ -79,7 +87,7 @@ COPY entrypoint.sh /home/minecraft/entrypoint.sh
 COPY download_url.py /home/minecraft/download_url.py
 
 # Add some timestamps / build information into the image
-RUN printf "GITHUB_REF=%s\nGITHUB_REPOSITORY=%s\nGITHUB_SHA=%s\nBUILD_DATE=$(date -u)\n" "$GITHUB_REF" "$GITHUB_REPOSITORY" "$GITHUB_SHA" > /home/minecraft/build-details.txt
+RUN printf "GITHUB_REF=%s\nGITHUB_REPOSITORY=%s\nGITHUB_SHA=%s\nBUILD_DATE=$(date -u)\nOVERVIEWER_REPOSITORY=%s\nOVERVIEWER_BRANCH=%s\nOVERVIEWER_SHA=$(git -C Minecraft-Overviewer log -1 --pretty='%H')\n" "$GITHUB_REF" "$GITHUB_REPOSITORY" "$GITHUB_SHA" "$OVERVIEWER_REPOSITORY" "$OVERVIEWER_BRANCH" > /home/minecraft/build-details.txt
 
 RUN chown minecraft:minecraft -R /home/minecraft/
 
